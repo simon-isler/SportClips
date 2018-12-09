@@ -1,0 +1,13 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+    padding-top: 3.5rem;
+}
+
+.list-group {
+    float: left;
+    width: 20%;
+}
+
+.tab-content {
+    margin-left: 10;
+}
