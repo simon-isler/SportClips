@@ -5,9 +5,9 @@ body {
 
 .list-group {
     float: left;
-    width: 20%;
+    width: auto;
 }
 
 .tab-content {
-    margin-left: 10;
+    margin-left: 15%;
 }
