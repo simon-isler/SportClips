@@ -1,3 +1,11 @@
+<?php
+include('php/session.php');
+
+if(!isset($_SESSION['login_user'])){
+    header("location: login.php"); // redirecting to login
+}
+?>
+
 <!doctype html>
 <html lang="de">
 <head>

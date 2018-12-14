@@ -1,3 +1,11 @@
+<?php
+include('php/login.php'); // Includes Login Script
+
+if(isset($_SESSION['login_user'])){
+    header("location: index.php"); // Redirecting To Index
+}
+?>
+
 <!doctype html>
 <html lang="de">
 <head>
