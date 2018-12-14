@@ -25,16 +25,20 @@ function createDatabase($db) {
     $db->query($table);
 }
 
+// login validation
 if (isset($_POST['submit'])) {
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $error = "Username or Password is invalid";
     } else {
-        // Define $username and $password
+        // define $username and $password
         $username = $_POST['username'];
         $password = $_POST['password'];
 
         // mysqli_connect() function opens a new connection to the MySQL server.
         $conn = mysqli_connect("localhost", "root", "", "company");
+
+        // create database
+        createDatabase($conn);
 
         // SQL query to fetch information of registerd users and finds user match.
         $query = "SELECT username, password from login where username=? AND password=? LIMIT 1";
