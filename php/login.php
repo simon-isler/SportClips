@@ -10,8 +10,19 @@ session_start(); // Starting Session
 $error = ''; // Variable To Store Error Message
 
 // create database dynamically
-function createDatabase() {
+function createDatabase($db) {
+    // database & table
+    $createDB = "CREATE DATABASE IF NOT EXISTS SportClips";
+    $table = "CREATE TABLE IF NOT EXISTS login(
+    kuerzel varchar(10) not null,
+    typ enum('Gast', 'Lehrer', 'Schüler') not null,
+    passwort varchar(255) not null,
+    PRIMARY KEY (kuerzel))
+    ";
 
+    // execute query
+    $db->query($createDB);
+    $db->query($table);
 }
 
 if (isset($_POST['submit'])) {
