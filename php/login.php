@@ -9,6 +9,11 @@
 session_start(); // Starting Session
 $error = ''; // Variable To Store Error Message
 
+// create database dynamically
+function createDatabase() {
+
+}
+
 if (isset($_POST['submit'])) {
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $error = "Username or Password is invalid";
