@@ -32,7 +32,6 @@ body {
     }
 }
 
-
 .form-signin .form-control {
     position: relative;
     box-sizing: border-box;
@@ -55,3 +54,6 @@ body {
     border-top-right-radius: 0;
 }
 
+button {
+    margin-top: 40px;
+}
