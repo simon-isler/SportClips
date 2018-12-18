@@ -36,17 +36,14 @@ if(isset($_SESSION['login_user'])){
 
 <body class="text-center">
 <form class="form-signin">
-    <div class="login">
-    <img class="mb-4" src="img/video-icon.png" alt="Videoportal" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">SportClips</h1>
+    <br>
     <label for="inputEmail" class="sr-only">Benutzername</label>
     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
     <label for="inputPassword" class="sr-only">Paswort</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <br>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
     <p class="mt-5 mb-3 text-muted">&copy; Simon Isler, 2018</p>
-    </div>
 </form>
 </body>
 </html>

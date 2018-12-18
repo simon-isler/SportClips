@@ -24,11 +24,6 @@ body {
     box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
 }
 
-.login {
-    max-width: 330px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 @media only screen and (max-width: 800px){
     .form-signin {
@@ -37,9 +32,6 @@ body {
     }
 }
 
-.form-signin .checkbox {
-    font-weight: 400;
-}
 
 .form-signin .form-control {
     position: relative;
@@ -57,7 +49,9 @@ body {
     border-bottom-left-radius: 0;;
 }
 .form-signin input[type="password"] {
+    margin-top: 20px;
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+

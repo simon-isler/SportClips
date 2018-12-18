@@ -72,8 +72,7 @@ if(!isset($_SESSION['login_user'])){
             <a class="list-group-item list-group-item-action" data-toggle="list" href="#parcours" role="tab">Parcours</a>
             <a class="list-group-item list-group-item-action" data-toggle="list" href="#speerwurf" role="tab">Speerwurf</a>
         </div>
-
-        <!-- Tab panes -->
+            <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane active" id="alle" role="tabpanel">
                 <video width="600" height="500" controls>
