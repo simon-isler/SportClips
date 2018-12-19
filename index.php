@@ -1,11 +1,3 @@
-<?php
-include('php/session.php');
-
-if(!isset($_SESSION['login_user'])){
-    header("location: login.php"); // redirecting to login
-}
-?>
-
 <!doctype html>
 <html lang="de">
 <head>
@@ -50,7 +42,7 @@ if(!isset($_SESSION['login_user'])){
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Video suchen..." aria-label="Search">
-            <button type="button" class="btn btn-outline-danger"><a href="php/logout.php">Abmelden</a></button>
+            <button type="button" class="btn btn-outline-danger"><a href="">Abmelden</a></button>
         </form>
     </div>
 </nav>

@@ -1,11 +1,3 @@
-<?php
-include('php/login.php'); // Includes Login Script
-
-if(isset($_SESSION['login_user'])){
-    header("location: index.php"); // Redirecting To Index
-}
-?>
-
 <!doctype html>
 <html lang="de">
 <head>
@@ -22,7 +14,7 @@ if(isset($_SESSION['login_user'])){
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
     <link rel="shortcut icon" href="#" />
     <link rel="manifest" href="img/favicon/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#9f00a7">
+    <meta name="msapplication-TileColor" content="#9f00a7>
     <meta name="theme-color" content="#ffffff">
 
     <!-- Bootstrap core CSS -->
@@ -38,12 +30,12 @@ if(isset($_SESSION['login_user'])){
 <form class="form-signin">
     <h1 class="h3 mb-3 font-weight-normal">SportClips</h1>
     <br>
-    <label for="inputEmail" class="sr-only">Benutzername</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-    <label for="inputPassword" class="sr-only">Paswort</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <label for="benutzername" class="sr-only">Benutzername</label>
+    <input type="text" id="benutzername" class="form-control" placeholder="Benutzername" required autofocus>
+    <label for="passwort" class="sr-only">Passwort</label>
+    <input type="password" id="passwort" class="form-control" placeholder="Passwort" style="margin-top: 7%;" required>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
-    <p class="mt-5 mb-3 text-muted">&copy; Simon Isler, 2018</p>
+    <p class="mt-5 mb-3 text-muted" style="text-align: center;">Noch nicht registriert? <a href="register.php">Registrieren</a><br><br>Oder<a href="index.php"> als Gast anmelden</a></p>
 </form>
 </body>
 </html>

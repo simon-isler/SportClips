@@ -11,3 +11,8 @@ body {
 .tab-content {
     margin-left: 15%;
 }
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
