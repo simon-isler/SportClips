@@ -1,3 +1,7 @@
+<?php
+    include 'php/register.php';
+?>
+
 <!doctype html>
 <html lang="de">
 <head>
@@ -29,33 +33,33 @@
 <body>
 <form class="form-signin" method="post">
     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">SportClips</h1>
-    <p>Wilkommen! Geben Sie hier ihre Benutzerdaten ein.</p>
+    <p style="text-align: center;">Wilkommen! Geben Sie hier ihre Benutzerdaten ein.</p>
     <br>
     <div class="form-group">
         <label for="benutzername">Benutzername</label>
-        <input type="text" class="form-control" id="benutzername" placeholder="Benutzername" required>
+        <input type="text" class="form-control" name="benutzername" id="benutzername" placeholder="Benutzername" required>
     </div>
     <div class="form-group">
         <label for="passwort1">Passwort</label>
-        <input type="password" class="form-control" id="passwort1" placeholder="Passwort" required>
+        <input type="password" class="form-control" name="passwort1" id="passwort1" placeholder="Passwort" required>
     </div>
     <div class="form-group">
         <label for="passwort2">Passwort wiederholen</label>
-        <input type="password" class="form-control" id="passwort2" placeholder="Passwort wiederholen" required>
+        <input type="password" class="form-control" name="passwort2" id="passwort2" placeholder="Passwort wiederholen" required>
     </div>
     <div class="radios">
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="radios" id="radio1" checked>Lehrer
+            <input class="form-check-input" type="radio" name="lehrer" id="radio1" checked>Lehrer
         </label>
     </div>
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="radios" id="radio2">SchülerIn
+            <input class="form-check-input" type="radio" name="schueler" id="radio2">SchülerIn
         </label>
     </div>
     </div>
-
+    <p><?php echo $error; ?></p>
     <button class="btn btn-lg btn-primary btn-block" type="submit" name="registrieren">Registrieren</button>
     <p class="mt-5 mb-3 text-muted" style="text-align: center;"><a href="login.php">Zurück zum Login</a></p>
 </form>

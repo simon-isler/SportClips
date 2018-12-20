@@ -1,5 +1,7 @@
 <?php
+include ('php/db.php');
 include('php/login.php'); // Includes Login Script
+
 if (isset($_SESSION['benutzername'])) {
     header("location: index.php"); // Redirecting To Profile Page
 }
