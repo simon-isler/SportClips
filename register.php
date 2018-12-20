@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<form class="form-signin">
+<form class="form-signin" method="post">
     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">SportClips</h1>
     <p>Wilkommen! Geben Sie hier ihre Benutzerdaten ein.</p>
     <br>
@@ -56,7 +56,7 @@
     </div>
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Registrieren</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="registrieren">Registrieren</button>
     <p class="mt-5 mb-3 text-muted" style="text-align: center;"><a href="login.php">Zurück zum Login</a></p>
 </form>
 </body>
