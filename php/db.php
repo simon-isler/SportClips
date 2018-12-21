@@ -18,4 +18,6 @@ $table = "CREATE TABLE IF NOT EXISTS TBenutzer(
     PRIMARY KEY (BenID))";
 
 $conn->query($database);
+mysqli_select_db($conn, "SportClips");
 $conn->query($table);
+
