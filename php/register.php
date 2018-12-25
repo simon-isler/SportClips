@@ -6,18 +6,19 @@
  * Time: 09:40
  */
 
+session_start();
 
 $msg = "";
 $role = "";
 
 if (isset($_POST['registrieren'])) {
     // connect to DB
-    $conn = mysqli_connect("localhost", "root", "");
+    $conn = mysqli_connect("localhost", "root", "", "SportClips");
 
     // Escape user inputs for security
-    $benutzername = mysqli_real_escape_string($conn, $_REQUEST['benutzername']);
-    $passwort1 = mysqli_real_escape_string($conn, $_REQUEST['passwort1']);
-    $passwort2 = mysqli_real_escape_string($conn, $_REQUEST['passwort2']);
+    $benutzername = mysqli_real_escape_string($conn, $_POST['benutzername']);
+    $passwort1 = mysqli_real_escape_string($conn, $_POST['passwort1']);
+    $passwort2 = mysqli_real_escape_string($conn, $_POST['passwort2']);
 
     // validation of user input
     if (empty($benutzername) || empty($passwort1) || empty($passwort2)) {
@@ -32,17 +33,13 @@ if (isset($_POST['registrieren'])) {
                 $role = "Schueler";
             }
 
-            // user already exists
-
-            // insert into DB
-            $query = "insert into TBenutzer (BenName, BenPasswort, BenRole) values ('$benutzername', '$passwort1', '$role')";
-
+            // check if user already exists
 
 
         } else {
             $msg = "Passwörter stimmen nicht überein!";
         }
     }
-
-
 }
+
+

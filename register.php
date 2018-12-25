@@ -60,7 +60,7 @@
         </label>
     </div>
     </div>
-    <p><?php echo $msg; ?></p>
+    <p style="text-align: center;"><?php echo $msg; ?></p>
     <button class="btn btn-lg btn-primary btn-block" type="submit" name="registrieren">Registrieren</button>
     <p class="mt-5 mb-3 text-muted" style="text-align: center;"><a href="login.php">Zurück zum Login</a></p>
 </form>
