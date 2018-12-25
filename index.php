@@ -1,3 +1,12 @@
+<?php
+
+    include('php/login/session.php');
+
+    if(!isset($_SESSION['benutzername'])){
+        header("location: login.php"); // redirecting to login
+    }
+?>
+
 <!doctype html>
 <html lang="de">
 <head>
@@ -12,7 +21,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
-    <link rel="shortcut icon" href="#" />
+    <link rel="shortcut icon" href="#"/>
     <link rel="manifest" href="img/favicon/site.webmanifest">
     <meta name="msapplication-TileColor" content="#9f00a7">
     <meta name="theme-color" content="#ffffff">
@@ -30,7 +39,8 @@
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">SportClips</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -42,7 +52,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Video suchen..." aria-label="Search">
-            <button type="button" class="btn btn-outline-danger"><a href="">Abmelden</a></button>
+            <button type="button" class="btn btn-outline-danger"><a href="php/login/logout.php">Abmelden</a></button>
         </form>
     </div>
 </nav>
@@ -61,10 +71,12 @@
             <a class="list-group-item list-group-item-action active" data-toggle="list" href="#alle" role="tab">Alle</a>
             <a class="list-group-item list-group-item-action" data-toggle="list" href="#psychologie" role="tab">Psychologie</a>
             <a class="list-group-item list-group-item-action" data-toggle="list" href="#diskus" role="tab">Diskus</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#parcours" role="tab">Parcours</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#speerwurf" role="tab">Speerwurf</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#parcours"
+               role="tab">Parcours</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#speerwurf"
+               role="tab">Speerwurf</a>
         </div>
-            <!-- Tab panes -->
+        <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane active" id="alle" role="tabpanel">
                 <video width="600" height="500" controls>
