@@ -34,8 +34,7 @@
 <body>
 <form class="form-signin" method="post" action="">
     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">SportClips</h1>
-    <p style="text-align: center;">Wilkommen! Geben Sie hier ihre Benutzerdaten ein.</p>
-    <br>
+    <p style="text-align: center; font-style: italic;">Wilkommen! Geben Sie hier ihre Benutzerdaten ein.</p>
     <div class="form-group">
         <label for="benutzername">Benutzername</label>
         <input type="text" class="form-control" name="benutzername" id="benutzername" placeholder="Benutzername" maxlength="45" required>
@@ -60,7 +59,7 @@
         </label>
     </div>
     </div>
-    <p style="text-align: center;"><?php echo $msg; ?></p>
+    <p class="error""><?php echo $msg; ?></p>
     <button class="btn btn-lg btn-primary btn-block" type="submit" name="registrieren">Registrieren</button>
     <p class="mt-5 mb-3 text-muted" style="text-align: center;"><a href="login.php">Zurück zum Login</a></p>
 </form>

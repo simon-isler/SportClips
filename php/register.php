@@ -34,7 +34,19 @@ if (isset($_POST['registrieren'])) {
             }
 
             // check if user already exists
+            $check="SELECT * FROM TBenutzer WHERE BenName = '$benutzername'";
+            $rs = mysqli_query($conn,$check);
+            $data = mysqli_fetch_array($rs, MYSQLI_NUM);
 
+            if ($data[0] > 0) {
+                $msg = "Dieser Benutzer existiert bereits!";
+            } else {
+                // insert into DB
+                $insert = "INSERT INTO TBenutzer (BenID, BenName, BenPasswort, BenRole) values (NULL, '$benutzername', '$passwort1', '$role')";
+                $conn->query($insert);
+
+                $msg = "Ihr Konto wurde registriert. Sie können sich nun einloggen.";
+            }
 
         } else {
             $msg = "Passwörter stimmen nicht überein!";

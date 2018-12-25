@@ -3,16 +3,18 @@ body {
     padding-top: 3.5rem;
 }
 
+/* sidebar */
+.tab-content {
+    margin-left: 15%;
+}
+
 .list-group {
     float: left;
     width: auto;
-}
-
-.tab-content {
-    margin-left: 15%;
 }
 
 a {
     color: inherit;
     text-decoration: inherit;
 }
+
