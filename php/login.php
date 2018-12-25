@@ -18,7 +18,7 @@ if (isset($_POST['anmelden'])) {
         $passwort = $_POST['passwort'];
 
         // SQL query to fetch information of registerd users and finds user match.
-        $query = "SELECT BenName, BenPasswort from login where BenName=? AND BenPasswort=? LIMIT 1";
+        $query = "SELECT BenName, BenPasswort from TBenutzer where BenName=? AND BenPasswort=? LIMIT 1";
 
         // To protect MySQL injection for Security purpose
         $stmt = $conn->prepare($query);
