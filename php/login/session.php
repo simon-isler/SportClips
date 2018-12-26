@@ -18,4 +18,4 @@ $user = $_SESSION['benutzername'];
 $query = "SELECT BenName from TBenutzer where BenName = '$user'";
 $ses_sql = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($ses_sql);
-$login_session = $row['BenName'];
+$benutzername = $row['BenName'];

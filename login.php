@@ -3,7 +3,7 @@ include ('php/db.php');
 include('php/login/login.php'); // Includes Login Script
 
 if (isset($_SESSION['benutzername'])) {
-    header("location: index.php"); // Redirecting To Profile Page
+    header("location: index.php"); // redirecting to index
 }
 ?>
 
@@ -46,7 +46,7 @@ if (isset($_SESSION['benutzername'])) {
     <p class="error"><?php echo $error; ?></p>
     <button class="btn btn-lg btn-primary btn-block" type="submit" name="anmelden">Anmelden</button>
     <p class="mt-5 mb-3 text-muted" style="text-align: center;"><a href="register.php">Noch nicht registriert?
-            Registrieren</a><br><br><a href="index.php">Oder als Gast anmelden</a></p>
+            Registrieren</a><br><br><a href="php/login/guest.php">Oder als Gast anmelden</a></p>
 </form>
 
 <!-- Custom file first, then jQuery, then Popper.js, then jquery.validate.js, then Bootstrap JS -->

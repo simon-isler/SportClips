@@ -1,8 +1,7 @@
 <?php
-
     include('php/login/session.php');
 
-    if(!isset($_SESSION['benutzername'])){
+    if($_SESSION['benutzername'] == ""){
         header("location: login.php"); // redirecting to login
     }
 ?>
@@ -61,7 +60,7 @@
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-3">SportClips</h1>
-            <p class="lead">Wilkommen, USER!</p>
+            <p class="lead">Wilkommen, <?php echo $benutzername; ?>!</p>
         </div>
     </div>
 
