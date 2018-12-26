@@ -15,7 +15,9 @@ session_start();// Starting Session
 $user = $_SESSION['benutzername'];
 
 // SQL Query To Fetch Complete Information Of User
-$query = "SELECT BenName from TBenutzer where BenName = '$user'";
+$query = "SELECT BenName, BenRole from TBenutzer where BenName = '$user'";
 $ses_sql = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($ses_sql);
+
 $benutzername = $row['BenName'];
+$role = $row['BenRole'];

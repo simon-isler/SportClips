@@ -4,17 +4,9 @@ body {
 }
 
 /* sidebar */
-.tab-content {
-    margin-left: 15%;
-}
 
-.list-group {
-    float: left;
-    width: auto;
-}
 
 a {
     color: inherit;
     text-decoration: inherit;
 }
-

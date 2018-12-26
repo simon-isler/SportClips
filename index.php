@@ -32,6 +32,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/custom.css" rel="stylesheet">
+    <link href="css/cards.css" rel="stylesheet">
 </head>
 
 <body>
@@ -60,34 +61,30 @@
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-3">SportClips</h1>
-            <p class="lead">Wilkommen, <?php echo $benutzername; ?>!</p>
+            <p class="lead">Wilkommen, <?php echo $benutzername;?>!</p>
         </div>
     </div>
 
     <div class="container-fluid">
-        <!-- List group -->
-        <div class="list-group" id="myList" role="tablist">
-            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#alle" role="tab">Alle</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#psychologie" role="tab">Psychologie</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#diskus" role="tab">Diskus</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#parcours"
-               role="tab">Parcours</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#speerwurf"
-               role="tab">Speerwurf</a>
-        </div>
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div class="tab-pane active" id="alle" role="tabpanel">
-                <video width="600" height="500" controls>
-                    <source src="clips/Diskus.mp4" type="video/mp4">
-                </video>
+        <div class="row">
+            <div class="col-4">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                </div>
             </div>
-            <div class="tab-pane" id="psychologie" role="tabpanel">b</div>
-            <div class="tab-pane" id="diskus" role="tabpanel">c</div>
-            <div class="tab-pane" id="parcours" role="tabpanel">d</div>
-            <div class="tab-pane" id="speerwurf" role="tabpanel">e</div>
+            <div class="col-8">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">haaalo</div>
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+                </div>
+            </div>
         </div>
-    </div> <!-- /container -->
+    </div>
 </main>
 
 <!-- Custom file first, then jQuery, then Popper.js, then jquery.validate.js, then Bootstrap JS -->
