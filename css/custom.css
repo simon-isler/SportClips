@@ -3,8 +3,24 @@ body {
     padding-top: 3.5rem;
 }
 
-/* sidebar */
+/* list */
+.list-group {
+    width: auto;
+    margin-left: 2%;
+    float: left;
+}
 
+/* list for mobile phones: */
+@media only screen and (max-width: 768px) {
+    .list-group {
+        width: 100%;
+    }
+
+    .row {
+        position: relative;
+        width: 100%;
+    }
+}
 
 a {
     color: inherit;
