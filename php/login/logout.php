@@ -6,9 +6,11 @@
  * Time: 21:44
  */
 
-session_start();
+if (isset($_POST['abmelden'])) {
+    session_start();
 
-if(session_destroy()) // Destroying All Sessions
-{
-    header("Location: ./../../login.php"); // redirecting to login
+    if(session_destroy()) // Destroying All Sessions
+    {
+        header("Location: login.php"); // redirecting to login
+    }
 }

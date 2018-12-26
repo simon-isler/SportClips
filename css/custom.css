@@ -3,6 +3,12 @@ body {
     padding-top: 3.5rem;
 }
 
+/* Title */
+.jumbotron {
+    text-align: center;
+    padding-left: 0;
+}
+
 /* list */
 .list-group {
     width: auto;
@@ -19,6 +25,11 @@ body {
     .row {
         position: relative;
         width: 100%;
+    }
+
+    .card {
+        width: 190%;
+        margin-top: 10%;
     }
 }
 

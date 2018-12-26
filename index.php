@@ -1,8 +1,13 @@
 <?php
     include('php/login/session.php');
+    include ('php/login/logout.php');
 
     if($_SESSION['benutzername'] == ""){
         header("location: login.php"); // redirecting to login
+    }
+
+    if ($_SESSION['benutzername'] == "Gast") {
+        $role = "Gast";
     }
 ?>
 
@@ -50,9 +55,9 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" method="post">
             <input class="form-control mr-sm-2" type="text" placeholder="Video suchen..." aria-label="Search">
-            <button type="button" class="btn btn-outline-danger"><a href="php/login/logout.php">Abmelden</a></button>
+            <button type="submit" class="btn btn-outline-danger" name="abmelden">Abmelden</button>
         </form>
     </div>
 </nav>
@@ -66,31 +71,51 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row">
+            <div class="row">
                 <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                    <a class="list-group-item list-group-item-action active" id="alle" data-toggle="list" href="#list-alle" role="tab" aria-controls="home">Alle</a>
+                    <a class="list-group-item list-group-item-action" id="psychologie" data-toggle="list" href="#list-psychologie" role="tab" aria-controls="profile">Psychologie</a>
+                    <a class="list-group-item list-group-item-action" id="diskus" data-toggle="list" href="#list-diskus" role="tab" aria-controls="messages">Diskus</a>
+                    <a class="list-group-item list-group-item-action" id="speerwurf" data-toggle="list" href="#list-speerwurf" role="tab" aria-controls="settings">Speerwurf</a>
+                    <a class="list-group-item list-group-item-action" id="parcours" data-toggle="list" href="#list-parcours" role="tab" aria-controls="settings">Parcours</a>
                 </div>
-            <div class="col-8">
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">haaalo</div>
-                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+
+                <div class="col-8">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="list-alle" role="tabpanel" aria-labelledby="alle">
+
+                                    <div class="col-md-4">
+                                        <div class="card mb-4 box-shadow">
+                                            <video class="card-img-top">
+                                                <source src="clips/Diskus.mp4#t=0.1" type="video/mp4">
+                                            </video>
+                                            <div class="card-body">
+                                                <p class="card-text">Text</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                        </div>
+                        <div class="tab-pane fade" id="list-psychologie" role="tabpanel" aria-labelledby="psychologie">...</div>
+                        <div class="tab-pane fade" id="list-diskus" role="tabpanel" aria-labelledby="diskus">...</div>
+                        <div class="tab-pane fade" id="list-speerwurf" role="tabpanel" aria-labelledby="speerwurf">...</div>
+                        <div class="tab-pane fade" id="list-parcours" role="tabpanel" aria-labelledby="parcours">...</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </main>
 
-<!-- Custom file first, then jQuery, then Popper.js, then jquery.validate.js, then Bootstrap JS -->
+<!-- Custom file first, then jQuery, then jquery.validate.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
