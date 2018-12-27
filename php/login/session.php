@@ -24,7 +24,6 @@ $benutzername = $row['BenName'];
 $benutzerId = $row['BenID'];
 $role = $row['BenRole'];
 
-
 // assign role to guest
 if ($_SESSION['benutzername'] == "Gast") {
     $role = "Gast";

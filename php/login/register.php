@@ -19,6 +19,7 @@ if (isset($_POST['registrieren'])) {
     $benutzername = mysqli_real_escape_string($conn, $_POST['benutzername']);
     $passwort1 = mysqli_real_escape_string($conn, $_POST['passwort1']);
     $passwort2 = mysqli_real_escape_string($conn, $_POST['passwort2']);
+    $id = "NULL";
 
     // validation of user input
     if (empty($benutzername) || empty($passwort1) || empty($passwort2)) {
@@ -38,8 +39,9 @@ if (isset($_POST['registrieren'])) {
                 $msg = "Dieser Benutzer existiert bereits!";
             } else {
                 // insert into DB
-                $insert = $conn->prepare("INSERT INTO TBenutzer (BenID, BenName, BenPasswort, BenRole) values (NULL, '$benutzername', '$passwort1', '$role')");
-                $conn->query($insert);
+                $insert = $conn->prepare("INSERT INTO TBenutzer (BenID, BenName, BenPasswort, BenRole) values (?, ?, ?, ?)");
+                $insert->bind_param("ssss", $id, $benutzername, $passwort1, $role);
+                $insert->execute();
 
                 $msg = "Ihr Konto wurde registriert. Sie können sich nun einloggen.";
             }
