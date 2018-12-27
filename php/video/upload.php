@@ -19,22 +19,31 @@ if (isset($_POST['hochladen'])) {
     $allowedExts = array("mp4", "wma", "mov");
     $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
+    // globals
+    $filename = $_FILES["file"]["name"];
+    $kategorie = $_POST['kategorie'];
+    $path = "clips/" . $filename;
+
     // validation
     if ((($_FILES["file"]["type"] == "video/mp4") || ($_FILES["file"]["type"] == "video/wma") || ($_FILES["file"]["type"] == "video/quicktime")) && ($_FILES["file"]["size"] < 1000000000) && in_array($extension, $allowedExts)) {
       if ($_FILES["file"]["error"] > 0) {
             $msg = "Es gab einen Fehler bei dem Hochladen.";
         } else {
             // file already exists
-            if (file_exists("clips/" . $_FILES["file"]["name"])) {
-                $msg = $_FILES["file"]["name"] . " existiert bereits.";
+            if (file_exists("clips/" . $filename)) {
+                $msg = $filename . " existiert bereits.";
             } else {
                 // moving file to clips folder
                 move_uploaded_file($_FILES["file"]["tmp_name"],
-                    "clips/" . $_FILES["file"]["name"]);
+                    "clips/" . $filename);
                 $msg = "Die Datei wurde erfolgreich hochgeladen!";
 
-                // database entry
+                // connect to DB
+                $conn = mysqli_connect("localhost", "root", "", "SportClips");
 
+                // database entry
+                $insert = $conn->prepare("INSERT INTO TVideos (VidID, VidName, VidTag, VidPath VidDatum, BenID) values (NULL, '$filename', '$kategorie', '$path', 'now()', '$benutzerId')");
+                $conn->query($insert);
             }
         }
     } else {

@@ -50,12 +50,12 @@
     <div class="radios">
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="lehrer" id="radio1" checked>Lehrer
+            <input class="form-check-input" type="radio" name="radio" id="radio1" value="Lehrer" checked>Lehrer
         </label>
     </div>
     <div class="form-check form-check-inline">
         <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="schuelerIn" id="radio2">SchülerIn
+            <input class="form-check-input" type="radio" name="radio" id="radio2" value="Schueler">SchülerIn
         </label>
     </div>
     </div>

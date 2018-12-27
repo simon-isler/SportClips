@@ -67,7 +67,7 @@ if ($_SESSION['benutzername'] == "" || $role == "Gast") {
     </div>
 
     <div class="container-fluid">
-        <img src="img/back.png" alt="Back" onclick="history.back()" class="back">
+        <img src="img/back.png" alt="Back" onclick="window.location.href='index.php'"" class="back">
         <form class="upload" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="file">Datei</label>
@@ -75,7 +75,7 @@ if ($_SESSION['benutzername'] == "" || $role == "Gast") {
             </div>
             <div class="form-group">
                 <label for="kategorie">Kategorie</label>
-                <select class="form-control" id="kategorie">
+                <select class="form-control" id="kategorie" name="kategorie">
                     <option>Alle</option>
                     <option>Psychologie</option>
                     <option>Diskus</option>

@@ -26,12 +26,8 @@ if (isset($_POST['registrieren'])) {
     } else {
         // matching passwords
         if ($passwort1 == $passwort2) {
-            // get role
-            if (isset($_POST['lehrer'])) {
-                $role = "Lehrer";
-            } else {
-                $role = "Schueler";
-            }
+            // save role
+            $role = $_POST['radio'];
 
             // check if user already exists
             $check="SELECT * FROM TBenutzer WHERE BenName = '$benutzername'";
@@ -42,7 +38,7 @@ if (isset($_POST['registrieren'])) {
                 $msg = "Dieser Benutzer existiert bereits!";
             } else {
                 // insert into DB
-                $insert = "INSERT INTO TBenutzer (BenID, BenName, BenPasswort, BenRole) values (NULL, '$benutzername', '$passwort1', '$role')";
+                $insert = $conn->prepare("INSERT INTO TBenutzer (BenID, BenName, BenPasswort, BenRole) values (NULL, '$benutzername', '$passwort1', '$role')");
                 $conn->query($insert);
 
                 $msg = "Ihr Konto wurde registriert. Sie können sich nun einloggen.";

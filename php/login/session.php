@@ -15,13 +15,15 @@ session_start();// Starting Session
 $user = $_SESSION['benutzername'];
 
 // SQL Query To Fetch Complete Information Of User
-$query = "SELECT BenName, BenRole from TBenutzer where BenName = '$user'";
+$query = "SELECT BenName, BenRole, BenID from TBenutzer where BenName = '$user'";
 $ses_sql = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($ses_sql);
 
-// save data
+// user data
 $benutzername = $row['BenName'];
+$benutzerId = $row['BenID'];
 $role = $row['BenRole'];
+
 
 // assign role to guest
 if ($_SESSION['benutzername'] == "Gast") {
