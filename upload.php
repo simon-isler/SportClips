@@ -3,7 +3,7 @@ include('php/login/session.php');
 include('php/login/logout.php');
 include ('php/video/upload.php');
 
-if ($_SESSION['benutzername'] == "") {
+if ($_SESSION['benutzername'] == "" || $role == "Gast") {
     header("location: login.php"); // redirecting to login
 }
 ?>
@@ -52,7 +52,6 @@ if ($_SESSION['benutzername'] == "") {
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="post">
-            <input class="form-control mr-sm-2" type="text" placeholder="Video suchen..." aria-label="Search">
             <div class="full">
                 <button type="submit" class="btn btn-outline-danger" name="abmelden">Abmelden</button>
             </div>
@@ -63,54 +62,30 @@ if ($_SESSION['benutzername'] == "") {
 <main role="main">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3">SportClips</h1>
-            <p class="lead">Wilkommen, <?php echo $benutzername; ?>!</p>
+            <h1 class="display-3">Upload</h1>
         </div>
     </div>
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="alle" data-toggle="list" href="#list-alle"
-                   role="tab" aria-controls="home">Alle</a>
-                <a class="list-group-item list-group-item-action" id="psychologie" data-toggle="list"
-                   href="#list-psychologie" role="tab" aria-controls="profile">Psychologie</a>
-                <a class="list-group-item list-group-item-action" id="diskus" data-toggle="list" href="#list-diskus"
-                   role="tab" aria-controls="messages">Diskus</a>
-                <a class="list-group-item list-group-item-action" id="speerwurf" data-toggle="list"
-                   href="#list-speerwurf" role="tab" aria-controls="settings">Speerwurf</a>
-                <a class="list-group-item list-group-item-action" id="parcours" data-toggle="list" href="#list-parcours"
-                   role="tab" aria-controls="settings">Parcours</a>
+        <img src="img/back.png" alt="Back" onclick="history.back()" class="back">
+        <form class="upload" method="post" action="php/video/upload.php">
+            <div class="form-group">
+                <label for="file">Datei</label>
+                <input type="file" class="form-control" id="file" name="file">
             </div>
-
-            <div class="col-8">
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="list-alle" role="tabpanel" aria-labelledby="alle">
-                        <div class="row">
-                            <?php
-                            // only visible to Schueler & Lehrer
-                            if ($role == "Schueler" || $role == "Lehrer") {
-                                echo "
-                               <div class=\"col-md-3\">
-                                <div class=\"card mb-3 box-shadow\">
-                                <form method=\"post\" class=\"card-img-top\">
-                                    <button type=\"submit\" name=\"hinzufuegen\">
-                                        <img src=\"img/add.png\" alt=\"Hinzufügen\" class=\"card-img-top\">
-                                    </button>
-                                </form>
-                                </div>
-                            </div>";
-                            }?>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="list-psychologie" role="tabpanel" aria-labelledby="psychologie">...
-                    </div>
-                    <div class="tab-pane fade" id="list-diskus" role="tabpanel" aria-labelledby="diskus">...</div>
-                    <div class="tab-pane fade" id="list-speerwurf" role="tabpanel" aria-labelledby="speerwurf">...</div>
-                    <div class="tab-pane fade" id="list-parcours" role="tabpanel" aria-labelledby="parcours">...</div>
-                </div>
+            <div class="form-group">
+                <label for="kategorie">Kategorie</label>
+                <select class="form-control" id="kategorie">
+                    <option>Alle</option>
+                    <option>Psychologie</option>
+                    <option>Diskus</option>
+                    <option>Speerwurf</option>
+                    <option>Parcours</option>
+                </select>
             </div>
-        </div>
+            <p><?php echo $msg; ?></p>
+            <button type="submit" class="btn btn-primary" name="hochladen">Hochladen</button>
+        </form>
     </div>
 </main>
 

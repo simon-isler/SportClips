@@ -18,6 +18,14 @@ body {
 
 /* list for mobile phones: */
 @media only screen and (max-width: 768px) {
+    .full {
+         width: 100%;
+     }
+
+    .btn-outline-danger {
+        margin-top: 2%;
+    }
+
     .list-group {
         width: 100%;
     }
@@ -28,12 +36,28 @@ body {
     }
 
     .card {
-        width: 190%;
+        width: 100%;
         margin-top: 10%;
+        margin-left: 33%;
     }
 }
 
 a {
     color: inherit;
     text-decoration: inherit;
+}
+
+/* Back image */
+.back {
+    display: block;
+    height: 5%;
+    width: 5%;
+    float: left;
+    top: 0;
+}
+
+/* upload form */
+.upload {
+    margin-left: 20%;
+    padding-top: 3%;
 }

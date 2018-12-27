@@ -19,5 +19,12 @@ $query = "SELECT BenName, BenRole from TBenutzer where BenName = '$user'";
 $ses_sql = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($ses_sql);
 
+// save data
 $benutzername = $row['BenName'];
 $role = $row['BenRole'];
+
+// assign role to guest
+if ($_SESSION['benutzername'] == "Gast") {
+    $role = "Gast";
+    $benutzername = "Gast";
+}
