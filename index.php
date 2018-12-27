@@ -2,6 +2,7 @@
 include('php/login/session.php');
 include('php/login/logout.php');
 include ('php/video/upload.php');
+include ('php/video/display.php');
 
 if ($_SESSION['benutzername'] == "") {
     header("location: login.php"); // redirecting to login
@@ -83,7 +84,7 @@ if ($_SESSION['benutzername'] == "") {
                    role="tab" aria-controls="settings">Parcours</a>
             </div>
 
-            <div class="col-8">
+            <div class="container">
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="list-alle" role="tabpanel" aria-labelledby="alle">
                         <div class="row">
@@ -96,18 +97,22 @@ if ($_SESSION['benutzername'] == "") {
                                 <form method=\"post\" class=\"card-img-top\">
                                     <button type=\"submit\" name=\"hinzufuegen\">
                                         <img src=\"img/add.png\" alt=\"Hinzufügen\" class=\"card-img-top\">
-                                    </button>
-                                </form>
+                                        <div class=\"card-body\">
+                                             <p class=\"card-text\">Video hinzufügen</p>
+                                        </div>
+                                    </button>                           
+                                </form>                                
                                 </div>
                             </div>";
-                            }?>
+                            }
+
+                            ?>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="list-psychologie" role="tabpanel" aria-labelledby="psychologie">...
-                    </div>
-                    <div class="tab-pane fade" id="list-diskus" role="tabpanel" aria-labelledby="diskus">...</div>
-                    <div class="tab-pane fade" id="list-speerwurf" role="tabpanel" aria-labelledby="speerwurf">...</div>
-                    <div class="tab-pane fade" id="list-parcours" role="tabpanel" aria-labelledby="parcours">...</div>
+                    <div class="tab-pane fade" id="list-psychologie" role="tabpanel" aria-labelledby="psychologie"><?php showVid("");?></div>
+                    <div class="tab-pane fade" id="list-diskus" role="tabpanel" aria-labelledby="diskus">diskus</div>
+                    <div class="tab-pane fade" id="list-speerwurf" role="tabpanel" aria-labelledby="speerwurf">speerwurf</div>
+                    <div class="tab-pane fade" id="list-parcours" role="tabpanel" aria-labelledby="parcours">parcours</div>
                 </div>
             </div>
         </div>

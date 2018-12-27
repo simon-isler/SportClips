@@ -18,6 +18,10 @@ body {
 
 /* list for mobile phones: */
 @media only screen and (max-width: 768px) {
+    .container {
+        margin-top: 1%;
+    }
+
     .full {
          width: 100%;
      }
@@ -38,7 +42,6 @@ body {
     .card {
         width: 100%;
         margin-top: 10%;
-        margin-left: 33%;
     }
 }
 
@@ -61,3 +64,4 @@ a {
     margin-left: 20%;
     padding-top: 3%;
 }
+
