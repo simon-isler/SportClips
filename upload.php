@@ -35,6 +35,7 @@ if ($_SESSION['benutzername'] == "" || $role == "Gast") {
     <!-- Custom styles for this template -->
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/cards.css" rel="stylesheet">
+    <link href="css/mobile.css" rel="stylesheet">
 </head>
 
 <body>

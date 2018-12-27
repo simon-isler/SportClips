@@ -16,34 +16,6 @@ body {
     float: left;
 }
 
-/* list for mobile phones: */
-@media only screen and (max-width: 768px) {
-    .container {
-        margin-top: 1%;
-    }
-
-    .full {
-         width: 100%;
-     }
-
-    .btn-outline-danger {
-        margin-top: 2%;
-    }
-
-    .list-group {
-        width: 100%;
-    }
-
-    .row {
-        position: relative;
-        width: 100%;
-    }
-
-    .card {
-        width: 100%;
-        margin-top: 10%;
-    }
-}
 
 a {
     color: inherit;
@@ -53,8 +25,8 @@ a {
 /* Back image */
 .back {
     display: block;
-    height: 5%;
-    width: 5%;
+    height: 6%;
+    width: 6%;
     float: left;
     top: 0;
 }
