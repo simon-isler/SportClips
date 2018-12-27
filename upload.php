@@ -74,6 +74,10 @@ if ($_SESSION['benutzername'] == "" || $role == "Gast") {
                 <input type="file" class="form-control" id="file" name="file">
             </div>
             <div class="form-group">
+                <label for="name">Titel</label>
+                <input type="text" class="form-control" id="name" name="titel" placeholder="Geben Sie den Video Titel ein.">
+            </div>
+            <div class="form-group">
                 <label for="kategorie">Kategorie</label>
                 <select class="form-control" id="kategorie" name="kategorie">
                     <option>Alle</option>

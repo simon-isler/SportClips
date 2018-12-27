@@ -17,6 +17,7 @@ if (isset($_POST['hinzufuegen'])) {
 if (isset($_POST['hochladen'])) {
     // globals
     $filename = $_FILES["file"]["name"];
+    $titel = $_POST['titel'];
     $kategorie = $_POST['kategorie'];
     $path = "clips/" . $filename;
     $id = "NULL";
@@ -41,7 +42,7 @@ if (isset($_POST['hochladen'])) {
 
                 // database entry
                 $insert = $conn->prepare("INSERT INTO TVideos (VidID, VidName, VidTag, VidPath, VidDatum, BenID) values (?, ?, ?, ?, ?, ?)");
-                $insert->bind_param("ssssss", $id, $filename, $kategorie, $path, $date, $benutzerId);
+                $insert->bind_param("ssssss", $id, $titel, $kategorie, $path, $date, $benutzerId);
                 $insert->execute();
             }
         }
