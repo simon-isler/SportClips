@@ -15,10 +15,6 @@ if (isset($_POST['hinzufuegen'])) {
 }
 
 if (isset($_POST['hochladen'])) {
-    // allowed file extensions
-    $allowedExts = array("mp4", "wma", "mov");
-    $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-
     // globals
     $filename = $_FILES["file"]["name"];
     $kategorie = $_POST['kategorie'];
@@ -26,8 +22,8 @@ if (isset($_POST['hochladen'])) {
     $id = "NULL";
     $date = date('Y-m-d');
 
-    // validation
-    if ((($_FILES["file"]["type"] == "video/mp4") || ($_FILES["file"]["type"] == "video/wma") || ($_FILES["file"]["type"] == "video/quicktime")) && ($_FILES["file"]["size"] < 1000000000) && in_array($extension, $allowedExts)) {
+    // validation (allowing all video types)
+    if ((preg_match('#^video/.*$#',$_FILES["file"]["type"])) && ($_FILES["file"]["size"] < 10000000000)) {
       if ($_FILES["file"]["error"] > 0) {
             $msg = "Es gab einen Fehler bei dem Hochladen.";
         } else {
