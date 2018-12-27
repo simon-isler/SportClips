@@ -14,10 +14,13 @@ $database = "CREATE DATABASE IF NOT EXISTS SportClips";
 $conn->query($database);
 $conn->select_db("SportClips");
 
-// create table
-$table = "CREATE TABLE IF NOT EXISTS TBenutzer(
+// tables
+$benutzer = "CREATE TABLE IF NOT EXISTS TBenutzer(
     BenID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     BenName varchar(45) NOT NULL,
     BenPasswort varchar(45) NOT NULL,
     BenRole enum('Schueler', 'Lehrer', 'Gast') NOT NULL)";
-$conn->query($table);
+$videos = "";
+
+// create tables
+$conn->query($benutzer);

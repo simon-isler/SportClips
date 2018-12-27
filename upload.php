@@ -68,7 +68,7 @@ if ($_SESSION['benutzername'] == "" || $role == "Gast") {
 
     <div class="container-fluid">
         <img src="img/back.png" alt="Back" onclick="history.back()" class="back">
-        <form class="upload" method="post" action="php/video/upload.php">
+        <form class="upload" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="file">Datei</label>
                 <input type="file" class="form-control" id="file" name="file">

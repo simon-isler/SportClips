@@ -9,14 +9,19 @@
 // store error msg
 $msg = "";
 
+// redirecting to upload
+if (isset($_POST['hinzufuegen'])) {
+    header("location: upload.php");
+}
+
 if (isset($_POST['hochladen'])) {
     // allowed file extensions
     $allowedExts = array("mp4", "wma", "mov");
     $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
     // validation
-    if ((($_FILES["file"]["type"] == "video/mp4") || ($_FILES["file"]["type"] == "video/wma") || ($_FILES["file"]["type"] == "video/move")) && ($_FILES["file"]["size"] < 20000) && in_array($extension, $allowedExts)) {
-        if ($_FILES["file"]["error"] > 0) {
+    if ((($_FILES["file"]["type"] == "video/mp4") || ($_FILES["file"]["type"] == "video/wma") || ($_FILES["file"]["type"] == "video/quicktime")) && ($_FILES["file"]["size"] < 1000000000) && in_array($extension, $allowedExts)) {
+      if ($_FILES["file"]["error"] > 0) {
             $msg = "Es gab einen Fehler bei dem Hochladen.";
         } else {
             // file already exists

@@ -1,6 +1,9 @@
 # SportClips
  a web application for videos about physical education
 
+## Prerequisites
+- running MySQL server (XAMPP)
+
 ## Author
 - Simon Isler
 
