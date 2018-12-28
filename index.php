@@ -5,6 +5,7 @@ include('php/login/logout.php');
 include('php/video/upload.php');
 include('php/video/display.php');
 include('php/video/delete.php');
+include ('php/video/search.php');
 
 if ($_SESSION['benutzername'] == "") {
     header("location: login.php"); // redirecting to login
@@ -54,12 +55,16 @@ if ($_SESSION['benutzername'] == "") {
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+                <?php
+                // only visible to Schueler & Lehrer role
+                if ($role == "Schueler" || $role == "Lehrer") {
+                    echo "<a class=\"nav-link\" href=\"upload.php\">Hinzufügen<span class=\"sr-only\">(current)</span></a>";
+                }?>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="post">
-            <input class="form-control mr-sm-2" type="text" placeholder="Nach Tag oder Name suchen..." aria-label="Search">
-            <button><i class="fa fa-search"></i></button>
+            <input class="form-control mr-sm-2" type="text" placeholder="Nach Tag oder Name suchen..." aria-label="Search" name="suchtext">
+            <button type="submit" name="suchen"><i class="fa fa-search"></i></button>
             <div class="full">
                 <button type="submit" class="btn btn-outline-danger" name="abmelden">Abmelden</button>
             </div>
@@ -80,19 +85,6 @@ if ($_SESSION['benutzername'] == "") {
             <div class="container" style="width: 80%; float: right;">
                 <div class="row">
                     <?php
-                    // only visible to Schueler & Lehrer
-                    if ($role == "Schueler" || $role == "Lehrer") {
-                        echo "
-                               <div class=\"col-md-4\" onclick=\"window.location.href='upload.php'\">
-                                <div class=\"card mb-4 box-shadow\" style='height: 92.5%'>
-                                <div class=\"card-body\">
-                                           
-                                            <img class='add' src='img/add.png' alt='Add'>   
-                                        </div>                       
-                                </div>
-                            </div>";
-                    }
-
                     showVideo("SELECT VidID, VidPath, VidName, BenID FROM TVideos");
                     ?>
                 </div>

@@ -79,3 +79,7 @@ video.mainVideo {
 .tags-input {
     width: 100% !important;
 }
+
+.alert-danger {
+    width: 100%;
+}

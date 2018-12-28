@@ -95,7 +95,7 @@ if (isset($_POST['hochladen'])) {
                 $insert->bind_param("sssss", $id, $titel, $path, $date, $benutzerId);
                 $insert->execute();
 
-                // tags
+                // save tags
                 $tags = explode(",", $tags); // divide
                 $length = count($tags); // count tags
 

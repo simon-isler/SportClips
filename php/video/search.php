@@ -6,6 +6,13 @@
  * Time: 14:19
  */
 
-function search() {
+if (isset($_POST['suchen'])) {
+    // connect to DB
+    $conn = mysqli_connect("localhost", "root", "", "SportClips");
+
+    // define text
+    $suchtext = $_POST['suchtext'];
+
+    // find matches
 
 }
