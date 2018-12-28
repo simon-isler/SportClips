@@ -1,7 +1,7 @@
 /* mobile phone design: */
 @media only screen and (max-width: 768px) {
     .container {
-        margin-top: 1%;
+        margin-top: 2%;
     }
 
     .full {
@@ -21,8 +21,34 @@
         width: 100%;
     }
 
-    .card {
+    .col-md-4 {
         width: 100%;
         margin-top: 10%;
+    }
+
+    .add {
+        height: 100%;
+    }
+
+    .form-inline .form-control {
+        width: 100%;
+    }
+
+    .btn-outline-danger {
+        margin: auto;
+        display: block;
+        margin-top: 2%;
+    }
+
+    .back {
+        height: 10%;
+        width: 10%;
+        float: left;
+        display: block;
+    }
+
+    video.mainVideo {
+        width: 100%;
+        margin-top: 5%;
     }
 }

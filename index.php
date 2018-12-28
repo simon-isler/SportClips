@@ -3,6 +3,8 @@ include('php/login/session.php');
 include('php/login/logout.php');
 include ('php/video/upload.php');
 include ('php/video/display.php');
+include ('php/video/view.php');
+include ('php/video/delete.php');
 
 if ($_SESSION['benutzername'] == "") {
     header("location: login.php"); // redirecting to login
@@ -85,7 +87,7 @@ if ($_SESSION['benutzername'] == "") {
                    role="tab" aria-controls="settings">Parcours</a>
             </div>
 
-            <div class="container">
+            <div class="container" style="width: 80%; float: right;">
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="list-alle" role="tabpanel" aria-labelledby="alle">
                         <div class="row">
@@ -93,27 +95,40 @@ if ($_SESSION['benutzername'] == "") {
                             // only visible to Schueler & Lehrer
                             if ($role == "Schueler" || $role == "Lehrer") {
                                 echo "
-                               <div class=\"col-md-3\">
-                                <div class=\"card mb-3 box-shadow\">
-                                <form method=\"post\" class=\"card-img-top\">
-                                    <button type=\"submit\" name=\"hinzufuegen\">
-                                        <img src=\"img/add.png\" alt=\"Hinzufügen\" class=\"card-img-top\">
-                                        <div class=\"card-body\">
-                                             <p class=\"card-text\">Video hinzufügen</p>
-                                        </div>
-                                    </button>                           
-                                </form>                                
+                               <div class=\"col-md-4\" onclick=\"window.location.href='upload.php'\">
+                                <div class=\"card mb-4 box-shadow\" style='height: 92.5%'>
+                                <div class=\"card-body\">
+                                           
+                                            <img class='add' src='img/add.png' alt='Add'>   
+                                        </div>                       
                                 </div>
                             </div>";
                             }
 
+                            showVideo("SELECT VidPath, VidName FROM TVideos");
                             ?>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="list-psychologie" role="tabpanel" aria-labelledby="psychologie"><?php showVid("");?></div>
-                    <div class="tab-pane fade" id="list-diskus" role="tabpanel" aria-labelledby="diskus">diskus</div>
-                    <div class="tab-pane fade" id="list-speerwurf" role="tabpanel" aria-labelledby="speerwurf">speerwurf</div>
-                    <div class="tab-pane fade" id="list-parcours" role="tabpanel" aria-labelledby="parcours">parcours</div>
+                    <div class="tab-pane fade" id="list-psychologie" role="tabpanel" aria-labelledby="psychologie">
+                        <?php
+                        showVideo("SELECT VidPath, VidName FROM TVideos where VidTag='psychologie'");
+                        ?>
+                    </div>
+                    <div class="tab-pane fade" id="list-diskus" role="tabpanel" aria-labelledby="diskus">
+                        <?php
+                        showVideo("SELECT VidPath, VidName FROM TVideos where VidTag='diskus'");
+                        ?>
+                    </div>
+                    <div class="tab-pane fade" id="list-speerwurf" role="tabpanel" aria-labelledby="speerwurf">
+                        <?php
+                        showVideo("SELECT VidPath, VidName FROM TVideos where VidTag='speerwurf'");
+                        ?>
+                    </div>
+                    <div class="tab-pane fade" id="list-parcours" role="tabpanel" aria-labelledby="parcours">
+                        <?php
+                        showVideo("SELECT VidPath, VidName FROM TVideos where VidTag='parcours'");
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>

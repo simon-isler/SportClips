@@ -5,6 +5,9 @@ include('php/login/login.php'); // Includes Login Script
 if (isset($_SESSION['benutzername'])) {
     header("location: index.php"); // redirecting to index
 }
+
+// disable errors
+error_reporting(0);
 ?>
 
 <!doctype html>

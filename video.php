@@ -3,7 +3,7 @@ include('php/login/session.php');
 include('php/login/logout.php');
 include ('php/video/upload.php');
 
-if ($_SESSION['benutzername'] == "" || $role == "Gast") {
+if ($_SESSION['benutzername'] == "") {
     header("location: login.php"); // redirecting to login
 }
 ?>
@@ -63,34 +63,16 @@ if ($_SESSION['benutzername'] == "" || $role == "Gast") {
 <main role="main">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3">Upload</h1>
+            <h1 class="display-3">Ansehen</h1>
         </div>
     </div>
 
     <div class="container-fluid">
         <img src="img/back.png" alt="Back" onclick="window.location.href='index.php'" class="back">
-        <form class="upload" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="file">Datei</label>
-                <input type="file" class="form-control" id="file" name="file">
-            </div>
-            <div class="form-group">
-                <label for="name">Titel</label>
-                <input type="text" class="form-control" id="name" name="titel" placeholder="Geben Sie den Video Titel ein.">
-            </div>
-            <div class="form-group">
-                <label for="kategorie">Kategorie</label>
-                <select class="form-control" id="kategorie" name="kategorie">
-                    <option>Alle</option>
-                    <option>Psychologie</option>
-                    <option>Diskus</option>
-                    <option>Speerwurf</option>
-                    <option>Parcours</option>
-                </select>
-            </div>
-            <p><?php echo $msg; ?></p>
-            <button type="submit" class="btn btn-primary" name="hochladen">Hochladen</button>
-        </form>
+
+        <video class="mainVideo" controls>
+            <source src="clips/Diskus.mp4" type="video/mp4">
+        </video>
     </div>
 </main>
 

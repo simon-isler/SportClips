@@ -6,44 +6,61 @@
  * Time: 15:28
  */
 
+// change video options according to browser
+function videoSettings() {
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
+    if (stripos( $user_agent, 'Chrome') !== false) {
+        echo "<video class=\"card-img-top\">";
+    } elseif (stripos( $user_agent, 'Safari') !== false) {
+        echo "<video class=\"card-img-top\" autoplay>";
+        echo "hoi";
+    } else {
+        echo "<video class=\"card-img-top\">";
+    }
+}
 
-function showVid($category) {
+function showVideo($select) {
     // connect to DB
     $conn = mysqli_connect("localhost", "root", "", "SportClips");
 
     // select query
-    $result = $conn->query("SELECT VidPath, VidName FROM TVideos where VidTag='$category'");
+    $result = $conn->query($select);
 
-// display videos
+    // video(s) found
     if ($result !== false) {
         if ($result->num_rows > 0) {
             while ($video = $result->fetch_assoc()) {
+                // save path of video
                 $path = $video['VidPath'];
+                $name = $video['VidName'];
 
-                echo "<div class=\"col-md-4\">
-    <div class=\"card mb-4 box-shadow\">
-        <video class=\"card-img-top\">
-            <source src=\"$path#t=0.1\" type=\"video/mp4\">
-        </video>
-        <div class=\"card-body\">
-            <p class=\"card-text\">Text</p>
-            <div class=\"d-flex justify-content-between align-items-center\">
-                <div class=\"btn-group\">
-                    <button type=\"submit\" name=\"ansehen\" class=\"btn btn-sm btn-outline-secondary\">Ansehen</button>
-                    <button type=\"submit\" name=\"loeschen\" class=\"btn btn-sm btn-outline-danger\">Löschen</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-            
-            ";
+                // display videos
+                echo " 
+               <div class=\"col-md-4\">
+                                <div class=\"card mb-4 box-shadow\">";
+                                    videoSettings();
+                                           echo "<source src=\"$path#t1.0\" type=\"video/mp4\">
+                                        </video>
+                                        <div class=\"card-body\">
+                                            <p class=\"card-text\">$name</p>
+                                            <div class=\"d-flex justify-content-between align-items-center\">
+                                                <div class=\"btn-group\">
+                                                <form method='post'>
+                                                    <button type=\"submit\" name=\"ansehen\" class=\"btn btn-sm btn-outline-secondary\">Ansehen</button>
+                                                    <button type=\"submit\" name=\"loeschen\" class=\"btn btn-sm btn-outline-danger\">Löschen</button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+               ";
             }
         } else {
             // error
             echo "
-        <div class=\"alert alert-primary\" role=\"alert\">
+        <div class=\"alert alert-danger\" role=\"alert\">
             Es gibt keine Videos in dieser Kategorie.
         </div>";
         }

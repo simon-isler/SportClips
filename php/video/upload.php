@@ -9,11 +9,6 @@
 // store error msg
 $msg = "";
 
-// redirecting to upload
-if (isset($_POST['hinzufuegen'])) {
-    header("location: upload.php");
-}
-
 if (isset($_POST['hochladen'])) {
     // globals
     $filename = $_FILES["file"]["name"];
