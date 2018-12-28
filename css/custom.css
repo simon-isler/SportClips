@@ -75,3 +75,7 @@ video.mainVideo {
     width: auto;
     max-height: 25%;
 }
+
+.tags-input {
+    width: 100% !important;
+}

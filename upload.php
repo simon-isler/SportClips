@@ -36,6 +36,10 @@ if ($_SESSION['benutzername'] == "" || $role == "Gast") {
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/cards.css" rel="stylesheet">
     <link href="css/mobile.css" rel="stylesheet">
+
+    <!-- Tags -->
+    <link rel="stylesheet" href="css/tags/tags-input.css">
+    <script src="js/tags/tags-input.js"></script>
 </head>
 
 <body>
@@ -79,14 +83,8 @@ if ($_SESSION['benutzername'] == "" || $role == "Gast") {
                 <input type="text" class="form-control" id="name" name="titel" placeholder="Geben Sie den Video Titel ein.">
             </div>
             <div class="form-group">
-                <label for="kategorie">Kategorie</label>
-                <select class="form-control" id="kategorie" name="kategorie">
-                    <option>Alle</option>
-                    <option>Psychologie</option>
-                    <option>Diskus</option>
-                    <option>Speerwurf</option>
-                    <option>Parcours</option>
-                </select>
+                <label for="tags">Tags</label><br>
+                <input type="tags" placeholder="add..." id="tags" name="tags">
             </div>
             <p><?php echo $msg; ?></p>
             <button type="submit" class="btn btn-primary" name="hochladen">Hochladen</button>
@@ -95,6 +93,7 @@ if ($_SESSION['benutzername'] == "" || $role == "Gast") {
 </main>
 
 <!-- Custom file first, then jQuery, then jquery.validate.js, then Bootstrap JS -->
+<script src="js/tags/tag.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

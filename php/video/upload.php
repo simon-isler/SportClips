@@ -13,7 +13,7 @@ if (isset($_POST['hochladen'])) {
     // globals
     $filename = $_FILES["file"]["name"];
     $titel = $_POST['titel'];
-    $kategorie = $_POST['kategorie'];
+    $kategorie = $_POST['tags'];
     $path = "clips/" . $filename;
     $id = "NULL";
     $date = date('Y-m-d');

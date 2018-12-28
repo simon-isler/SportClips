@@ -1,10 +1,7 @@
 <?php
-include('php/db.php');
 include('php/login/session.php');
 include('php/login/logout.php');
-include('php/video/upload.php');
-include('php/video/display.php');
-include('php/video/delete.php');
+
 
 if ($_SESSION['benutzername'] == "") {
     header("location: login.php"); // redirecting to login
@@ -34,8 +31,6 @@ if ($_SESSION['benutzername'] == "") {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link href="css/custom.css" rel="stylesheet">
@@ -58,8 +53,6 @@ if ($_SESSION['benutzername'] == "") {
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="post">
-            <input class="form-control mr-sm-2" type="text" placeholder="Nach Tag oder Name suchen..." aria-label="Search">
-            <button><i class="fa fa-search"></i></button>
             <div class="full">
                 <button type="submit" class="btn btn-outline-danger" name="abmelden">Abmelden</button>
             </div>
@@ -71,33 +64,13 @@ if ($_SESSION['benutzername'] == "") {
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-3">SportClips</h1>
-            <p class="lead">Wilkommen, <?php echo $benutzername; ?>!</p>
         </div>
     </div>
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="container" style="width: 80%; float: right;">
-                <div class="row">
-                    <?php
-                    // only visible to Schueler & Lehrer
-                    if ($role == "Schueler" || $role == "Lehrer") {
-                        echo "
-                               <div class=\"col-md-4\" onclick=\"window.location.href='upload.php'\">
-                                <div class=\"card mb-4 box-shadow\" style='height: 92.5%'>
-                                <div class=\"card-body\">
-                                           
-                                            <img class='add' src='img/add.png' alt='Add'>   
-                                        </div>                       
-                                </div>
-                            </div>";
-                    }
+        <img src="img/back.png" alt="Back" onclick="window.location.href='index.php'" class="back">
 
-                    showVideo("SELECT VidID, VidPath, VidName, BenID FROM TVideos");
-                    ?>
-                </div>
-            </div>
-        </div>
+
     </div>
 </main>
 
