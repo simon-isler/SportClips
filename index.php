@@ -57,7 +57,7 @@ if ($_SESSION['benutzername'] == "") {
             <li class="nav-item active">
                 <?php
                 // only visible to Schueler & Lehrer role
-                if ($role == "Schueler" || $role == "Lehrer") {
+                if ($_SESSION['role'] == "Schueler" || $_SESSION['role'] == "Lehrer") {
                     echo "<a class=\"nav-link\" href=\"upload.php\">Hinzufügen<span class=\"sr-only\">(current)</span></a>";
                 }?>
             </li>

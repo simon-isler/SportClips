@@ -38,7 +38,7 @@ function insertTags($conn, $check, $titel, $null, $tags, $id, $tagID) {
     } else { // tag doesn't exist
         // insert tag into DB
         $insert = $conn->prepare("INSERT INTO TTags (TagID, TagName) values (?, ?)");
-        $insert->bind_param("ss", $null, $tags[0]);
+        $insert->bind_param("ss", $null, $tags);
         $insert->execute();
 
         // overwrite tag id
@@ -64,6 +64,7 @@ if (isset($_POST['hochladen'])) {
     $tagID = "";
     $date = date('Y-m-d');
     $null = "";
+    $benutzerId = $_SESSION['benutzerId'];
 
     // connect to DB
     $conn = mysqli_connect("localhost", "root", "", "SportClips");
@@ -102,11 +103,11 @@ if (isset($_POST['hochladen'])) {
                 // insert tags
                 if ($length < 1) { // one tag
                     $check = "SELECT TagID FROM TTags where TagName='$tags[0]'";
-                    insertTags($conn, $check, $titel, $null, $tags, $id, $tagID);
+                    insertTags($conn, $check, $titel, $null, $tags[0], $id, $tagID);
                 } else { // several tags
                     for ($i = 0; $i < $length; $i++) {
                         $check = "SELECT TagID FROM TTags where TagName='$tags[$i]'";
-                        insertTags($conn, $check, $titel, $null, $tags, $id, $tagID);
+                        insertTags($conn,$check, $titel, $null, $tags[$i], $id, $tagID);
                     }
                 }
             }

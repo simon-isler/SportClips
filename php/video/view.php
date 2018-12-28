@@ -11,7 +11,7 @@ function videoViewer($id) {
     $conn = mysqli_connect("localhost", "root", "", "SportClips");
 
     // get values from db
-    $query = "SELECT VidName, VidDatum, VidPath, VidTag from TVideos where VidID ='$id'";
+    $query = "SELECT VidName, VidDatum, VidPath from TVideos where VidID ='$id'";
     $result = $conn->query($query);
 
     // save values
@@ -19,7 +19,6 @@ function videoViewer($id) {
         $name = $video['VidName'];
         $datum = $video['VidDatum'];
         $path = $video['VidPath'];
-        $tag = $video['VidTag'];
     }
 
     // display video & information
@@ -30,6 +29,5 @@ function videoViewer($id) {
     echo "<div class=\"info\">
             <h4>$name<?php ?></h4>
             <p>$datum</p>
-            <p>Tag(s): $tag</p>
         </div>";
 }

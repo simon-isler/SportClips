@@ -3,7 +3,7 @@ include('php/login/session.php');
 include('php/login/logout.php');
 include ('php/video/upload.php');
 
-if ($_SESSION['benutzername'] == "" || $role == "Gast") {
+if ($_SESSION['benutzername'] == "" || $_SESSION['role'] == "Gast") {
     header("location: login.php"); // redirecting to login
 }
 ?>

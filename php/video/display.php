@@ -58,10 +58,11 @@ function showVideo($select) {
                                             <div class=\"btn-group\">
                                             <form method=\"post\" action='video.php'>
                                                 <button type=\"submit\" name=\"ansehen\" class=\"btn btn-sm btn-outline-secondary\" value='$VidID'>View</button>
-                                                </form>
-                                                <form method='post'>
-                                                <button type=\"submit\" name=\"loeschen\" class=\"btn btn-sm btn-outline-danger\" value='$VidID'>Löschen</button>            </form>
-                                            </div>
+                                                </form>";
+                if ($_SESSION['role'] == "Lehrer" || $_SESSION['benutzerId'] == $BenID) {
+                    echo "<form method='post'>
+                                                <button type=\"submit\" name=\"loeschen\" class=\"btn btn-sm btn-outline-danger\" value='$VidID'>Löschen</button>            </form>";}
+                                            echo "</div>
                                             <small class=\"text-muted\">$owner</small>
                                         </div>
                                     </div>
@@ -79,3 +80,6 @@ function showVideo($select) {
     }
 }
 
+if ($_SESSION['role'] == "Lehrer") {
+    echo "";
+}

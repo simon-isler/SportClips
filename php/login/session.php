@@ -21,11 +21,11 @@ $row = mysqli_fetch_assoc($ses_sql);
 
 // user data
 $benutzername = $row['BenName'];
-$benutzerId = $row['BenID'];
-$role = $row['BenRole'];
+$_SESSION['benutzerId'] = $row['BenID'];
+$_SESSION['role'] = $row['BenRole'];
 
 // assign role to guest
 if ($_SESSION['benutzername'] == "Gast") {
-    $role = "Gast";
+    $_SESSION['role'] = "Gast";
     $benutzername = "Gast";
 }
