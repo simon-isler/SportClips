@@ -24,13 +24,23 @@ $benutzer = "CREATE TABLE IF NOT EXISTS TBenutzer(
 $videos = "CREATE TABLE IF NOT EXISTS TVideos(
     VidID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     VidName varchar(100) NOT NULL,
-    VidTag varchar(100) NOT NULL,
     VidPath varchar(200) NOT NULL,
     VidDatum date NOT NULL,
     BenID int NOT NULL)";
 
+$videotags = "CREATE TABLE IF NOT EXISTS TVideoTags(
+      VideoTagID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+      VidID int NOT NULL,
+      TagID int NOT NULL)";
+
+$tags = "CREATE TABLE IF NOT EXISTS TTags(
+    TagID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    TagName varchar(100) NOT NULL)";
+
+
 // create tables
 $conn->query($benutzer);
 $conn->query($videos);
-
+$conn->query($videotags);
+$conn->query($tags);
 
