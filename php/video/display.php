@@ -6,6 +6,10 @@
  * Time: 15:28
  */
 
+// globals
+$path = "";
+$name = "";
+
 // change video options according to browser
 function videoSettings() {
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
@@ -21,6 +25,9 @@ function videoSettings() {
 }
 
 function showVideo($select) {
+    global $path;
+    global $name;
+
     // connect to DB
     $conn = mysqli_connect("localhost", "root", "", "SportClips");
 
@@ -34,26 +41,36 @@ function showVideo($select) {
                 // save path of video
                 $path = $video['VidPath'];
                 $name = $video['VidName'];
+                $id = $video['BenID'];
+
+                // author
+                $query = "SELECT BenName from TBenutzer where BenID = '$id'";
+                $output = $conn->query($query);
+
+                while ($author = $output->fetch_assoc()) {
+                    $owner = $author['BenName'];
+                }
 
                 // display videos
                 echo " 
                <div class=\"col-md-4\">
-                                <div class=\"card mb-4 box-shadow\">";
+                                <form method=\"post\">
+                                <div class=\"card mb-4 shadow-sm\">";
                                     videoSettings();
-                                           echo "<source src=\"$path#t1.0\" type=\"video/mp4\">
-                                        </video>
-                                        <div class=\"card-body\">
-                                            <p class=\"card-text\">$name</p>
-                                            <div class=\"d-flex justify-content-between align-items-center\">
-                                                <div class=\"btn-group\">
-                                                <form method='post'>
-                                                    <button type=\"submit\" name=\"ansehen\" class=\"btn btn-sm btn-outline-secondary\">Ansehen</button>
-                                                    <button type=\"submit\" name=\"loeschen\" class=\"btn btn-sm btn-outline-danger\">Löschen</button>
-                                                </div>
-                                                </form>
+                                        echo "<source src=\"$path#t1.0\" type=\"video/mp4\">
+                                    </video>
+                                    <div class=\"card-body\">
+                                        <p class=\"card-text\"></p>
+                                        <div class=\"d-flex justify-content-between align-items-center\">
+                                            <div class=\"btn-group\">
+                                                <button type=\"submit\" name=\"ansehen\" class=\"btn btn-sm btn-outline-secondary\">View</button>
+                                                <button type=\"submit\" name=\"loeschen\" class=\"btn btn-sm btn-outline-danger\">Löschen</button>
                                             </div>
+                                            <small class=\"text-muted\">$owner</small>
                                         </div>
+                                    </div>
                                 </div>
+                                </form>
                             </div>
                ";
             }

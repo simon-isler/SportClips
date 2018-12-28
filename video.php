@@ -2,6 +2,7 @@
 include('php/login/session.php');
 include('php/login/logout.php');
 include ('php/video/upload.php');
+include ('php/video/display.php');
 
 if ($_SESSION['benutzername'] == "") {
     header("location: login.php"); // redirecting to login
@@ -63,7 +64,7 @@ if ($_SESSION['benutzername'] == "") {
 <main role="main">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3">Ansehen</h1>
+            <h1 class="display-3">SportClips</h1>
         </div>
     </div>
 
@@ -73,6 +74,11 @@ if ($_SESSION['benutzername'] == "") {
         <video class="mainVideo" controls>
             <source src="clips/Diskus.mp4" type="video/mp4">
         </video>
+
+        <div class="info">
+            <h4>Titel <?php echo $name;?></h4>
+            <p>Datum, Autor</p>
+        </div>
     </div>
 </main>
 

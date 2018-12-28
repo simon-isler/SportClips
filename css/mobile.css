@@ -6,9 +6,12 @@
 
     .full {
         width: 100%;
+        margin: auto;
+        display: block;
+        text-align: center;
     }
 
-    .btn-outline-danger {
+    .full button {
         margin-top: 2%;
     }
 
@@ -34,12 +37,6 @@
         width: 100%;
     }
 
-    .btn-outline-danger {
-        margin: auto;
-        display: block;
-        margin-top: 2%;
-    }
-
     .back {
         height: 10%;
         width: 10%;
@@ -49,6 +46,13 @@
 
     video.mainVideo {
         width: 100%;
+        height: 100%;
         margin-top: 5%;
+        margin-left: 0;
+    }
+
+    .info {
+        float: left;
+        margin-top: 2%;
     }
 }

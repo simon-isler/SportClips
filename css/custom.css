@@ -50,8 +50,28 @@ a {
     bottom: 0;
 }
 
+/* video */
 video.mainVideo {
+    float: left;
     width: 50%;
     height: 200%;
-    margin-left: 10%;
+    margin-left: 5%;
+}
+
+/* video information */
+.info {
+    float: right;
+    width: 36%;
+}
+
+.text-muted {
+    float: right;
+    width: auto;
+    max-width: 30%;
+}
+
+.btn-group {
+    float: left;
+    width: auto;
+    max-height: 25%;
 }
