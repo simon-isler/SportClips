@@ -21,7 +21,6 @@ function videoViewer($id) {
         $path = $video['VidPath'];
     }
 
-
     // display video & information
     echo "<video class=\"mainVideo\" id='video' controls>
             <source src=\"$path\" type=\"video/mp4\">

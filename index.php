@@ -3,7 +3,6 @@ include('php/login/session.php');
 include('php/login/logout.php');
 include ('php/video/upload.php');
 include ('php/video/display.php');
-include ('php/video/view.php');
 include ('php/video/delete.php');
 
 if ($_SESSION['benutzername'] == "") {

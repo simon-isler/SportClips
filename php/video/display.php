@@ -48,7 +48,6 @@ function showVideo($select) {
                 // display videos
                 echo " 
                <div class=\"col-md-4\">
-                                <form method=\"post\" action='video.php'>
                                 <div class=\"card mb-4 shadow-sm\">";
                                     videoSettings();
                                         echo "<source src=\"$path#t1.0\" type=\"video/mp4\">
@@ -57,14 +56,16 @@ function showVideo($select) {
                                         <p class=\"card-text\">$name</p>
                                         <div class=\"d-flex justify-content-between align-items-center\">
                                             <div class=\"btn-group\">
+                                            <form method=\"post\" action='video.php'>
                                                 <button type=\"submit\" name=\"ansehen\" class=\"btn btn-sm btn-outline-secondary\" value='$VidID'>View</button>
-                                                <button type=\"submit\" name=\"loeschen\" class=\"btn btn-sm btn-outline-danger\" value='$VidID'>Löschen</button>
+                                                </form>
+                                                <form method='post'>
+                                                <button type=\"submit\" name=\"loeschen\" class=\"btn btn-sm btn-outline-danger\" value='$VidID'>Löschen</button>            </form>
                                             </div>
                                             <small class=\"text-muted\">$owner</small>
                                         </div>
                                     </div>
                                 </div>
-                                </form>
                             </div>
                ";
             }
