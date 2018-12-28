@@ -9,4 +9,6 @@
 // redirect to video page
 if (isset($_POST['ansehen'])) {
     header("location: video.php");
+
+    echo $name;
 }

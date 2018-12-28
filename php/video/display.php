@@ -6,10 +6,6 @@
  * Time: 15:28
  */
 
-// globals
-$path = "";
-$name = "";
-
 // change video options according to browser
 function videoSettings() {
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
@@ -25,7 +21,6 @@ function videoSettings() {
 }
 
 function showVideo($select) {
-    global $path;
     global $name;
 
     // connect to DB
@@ -60,7 +55,7 @@ function showVideo($select) {
                                         echo "<source src=\"$path#t1.0\" type=\"video/mp4\">
                                     </video>
                                     <div class=\"card-body\">
-                                        <p class=\"card-text\"></p>
+                                        <p class=\"card-text\">$name</p>
                                         <div class=\"d-flex justify-content-between align-items-center\">
                                             <div class=\"btn-group\">
                                                 <button type=\"submit\" name=\"ansehen\" class=\"btn btn-sm btn-outline-secondary\">View</button>

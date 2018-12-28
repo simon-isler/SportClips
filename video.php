@@ -76,7 +76,7 @@ if ($_SESSION['benutzername'] == "") {
         </video>
 
         <div class="info">
-            <h4>Titel <?php echo $name;?></h4>
+            <h4>Titel</h4>
             <p>Datum, Autor</p>
         </div>
     </div>
