@@ -1,11 +1,15 @@
 <?php
 include('php/login/session.php');
 include('php/login/logout.php');
-include ('php/video/upload.php');
-include ('php/video/display.php');
+include ('php/video/view.php');
 
 if ($_SESSION['benutzername'] == "") {
     header("location: login.php"); // redirecting to login
+}
+
+// save video id
+if (isset($_POST['ansehen'])) {
+    $id = $_POST['ansehen'];
 }
 ?>
 
@@ -71,18 +75,21 @@ if ($_SESSION['benutzername'] == "") {
     <div class="container-fluid">
         <img src="img/back.png" alt="Back" onclick="window.location.href='index.php'" class="back">
 
-        <video class="mainVideo" controls>
-            <source src="clips/Diskus.mp4" type="video/mp4">
-        </video>
+        <?php videoViewer($id);?>
 
         <div class="info">
-            <h4>Titel</h4>
-            <p>Datum, Autor</p>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox" onclick="slowMo();">
+            <label class="form-check-label" for="defaultCheck1">
+                Slow Motion
+            </label>
+        </div>
         </div>
     </div>
 </main>
 
 <!-- Custom file first, then jQuery, then jquery.validate.js, then Bootstrap JS -->
+<script src="js/slowMotion.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

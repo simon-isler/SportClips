@@ -21,8 +21,6 @@ function videoSettings() {
 }
 
 function showVideo($select) {
-    global $name;
-
     // connect to DB
     $conn = mysqli_connect("localhost", "root", "", "SportClips");
 
@@ -36,10 +34,11 @@ function showVideo($select) {
                 // save path of video
                 $path = $video['VidPath'];
                 $name = $video['VidName'];
-                $id = $video['BenID'];
+                $BenID = $video['BenID'];
+                $VidID = $video['VidID'];
 
                 // author
-                $query = "SELECT BenName from TBenutzer where BenID = '$id'";
+                $query = "SELECT BenName from TBenutzer where BenID = '$BenID'";
                 $output = $conn->query($query);
 
                 while ($author = $output->fetch_assoc()) {
@@ -49,7 +48,7 @@ function showVideo($select) {
                 // display videos
                 echo " 
                <div class=\"col-md-4\">
-                                <form method=\"post\">
+                                <form method=\"post\" action='video.php'>
                                 <div class=\"card mb-4 shadow-sm\">";
                                     videoSettings();
                                         echo "<source src=\"$path#t1.0\" type=\"video/mp4\">
@@ -58,8 +57,8 @@ function showVideo($select) {
                                         <p class=\"card-text\">$name</p>
                                         <div class=\"d-flex justify-content-between align-items-center\">
                                             <div class=\"btn-group\">
-                                                <button type=\"submit\" name=\"ansehen\" class=\"btn btn-sm btn-outline-secondary\">View</button>
-                                                <button type=\"submit\" name=\"loeschen\" class=\"btn btn-sm btn-outline-danger\">Löschen</button>
+                                                <button type=\"submit\" name=\"ansehen\" class=\"btn btn-sm btn-outline-secondary\" value='$VidID'>View</button>
+                                                <button type=\"submit\" name=\"loeschen\" class=\"btn btn-sm btn-outline-danger\" value='$VidID'>Löschen</button>
                                             </div>
                                             <small class=\"text-muted\">$owner</small>
                                         </div>
@@ -78,3 +77,4 @@ function showVideo($select) {
         }
     }
 }
+

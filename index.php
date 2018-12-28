@@ -105,29 +105,28 @@ if ($_SESSION['benutzername'] == "") {
                             </div>";
                             }
 
-                            showVideo("SELECT VidPath, VidName, BenID FROM TVideos");
+                            showVideo("SELECT VidID, VidPath, VidName, BenID FROM TVideos");
                             ?>
-
                         </div>
                     </div>
                     <div class="tab-pane fade" id="list-psychologie" role="tabpanel" aria-labelledby="psychologie">
                         <?php
-                        showVideo("SELECT VidPath, VidName, BenID FROM TVideos where VidTag='psychologie'");
+                        showVideo("SELECT VidID, VidPath, VidName, BenID FROM TVideos where VidTag='psychologie'");
                         ?>
                     </div>
                     <div class="tab-pane fade" id="list-diskus" role="tabpanel" aria-labelledby="diskus">
                         <?php
-                        showVideo("SELECT VidPath, VidName, BenID FROM TVideos where VidTag='diskus'");
+                        showVideo("SELECT VidID, VidPath, VidName, BenID FROM TVideos where VidTag='diskus'");
                         ?>
                     </div>
                     <div class="tab-pane fade" id="list-speerwurf" role="tabpanel" aria-labelledby="speerwurf">
                         <?php
-                        showVideo("SELECT VidPath, VidName, BenID FROM TVideos where VidTag='speerwurf'");
+                        showVideo("SELECT VidID, VidPath, VidName, BenID FROM TVideos where VidTag='speerwurf'");
                         ?>
                     </div>
                     <div class="tab-pane fade" id="list-parcours" role="tabpanel" aria-labelledby="parcours">
                         <?php
-                        showVideo("SELECT VidPath, VidName, BenID FROM TVideos where VidTag='parcours'");
+                        showVideo("SELECT VidID, VidPath, VidName, BenID FROM TVideos where VidTag='parcours'");
                         ?>
                     </div>
                 </div>
