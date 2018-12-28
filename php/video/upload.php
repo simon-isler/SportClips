@@ -9,6 +9,51 @@
 // store error msg
 $msg = "";
 
+// function to insert tags
+function insertTags($conn, $check, $titel, $null, $tags, $id, $tagID) {
+    $rs = mysqli_query($conn,$check);
+    $data = mysqli_fetch_array($rs, MYSQLI_NUM);
+
+    // save tag id
+    $output = $conn->query($check);
+
+    while ($tag = $output->fetch_assoc()) {
+        $tagID = $tag['TagID'];
+    }
+
+    // save video id
+    $select = "SELECT VidID from TVideos where VidName ='$titel'";
+    $result = $conn->query($select);
+
+    while ($video = $result->fetch_assoc()) {
+        $id = $video['VidID'];
+    }
+
+    // check if tag exists already
+    if ($data[0] > 0) { // tag exists already
+        // tag insert for video
+        $query = $conn->prepare("INSERT INTO TVideoTags (VideoTagID, VidID, TagID) values (?, ?, ?)");
+        $query->bind_param("sss", $null, $id, $tagID);
+        $query->execute();
+    } else { // tag doesn't exist
+        // insert tag into DB
+        $insert = $conn->prepare("INSERT INTO TTags (TagID, TagName) values (?, ?)");
+        $insert->bind_param("ss", $null, $tags[0]);
+        $insert->execute();
+
+        // overwrite tag id
+        $output = $conn->query($check);
+        while ($tag = $output->fetch_assoc()) {
+            $tagID = $tag['TagID'];
+        }
+
+        // tag insert for video
+        $query = $conn->prepare("INSERT INTO TVideoTags (VideoTagID, VidID, TagID) values (?, ?, ?)");
+        $query->bind_param("sss", $null, $id, $tagID);
+        $query->execute();
+    }
+}
+
 if (isset($_POST['hochladen'])) {
     // globals
     $filename = $_FILES["file"]["name"];
@@ -16,6 +61,7 @@ if (isset($_POST['hochladen'])) {
     $tags = $_POST['tags'];
     $path = "clips/" . $filename;
     $id = "NULL";
+    $tagID = "";
     $date = date('Y-m-d');
     $null = "";
 
@@ -45,53 +91,22 @@ if (isset($_POST['hochladen'])) {
                 $msg = "Die Datei wurde erfolgreich hochgeladen!";
 
                 // video database entry
-                $insert = $conn->prepare("INSERT INTO TVideos (VidID, VidName, VidPath, VidDatum, BenID) values (?, ?, ?, ?, ?, ?)");
-                $insert->bind_param("ssssss", $id, $titel, $path, $date, $benutzerId);
+                $insert = $conn->prepare("INSERT INTO TVideos (VidID, VidName, VidPath, VidDatum, BenID) values (?, ?, ?, ?, ?)");
+                $insert->bind_param("sssss", $id, $titel, $path, $date, $benutzerId);
                 $insert->execute();
 
                 // tags
                 $tags = explode(",", $tags); // divide
                 $length = count($tags); // count tags
 
-                // one tag
-                if ($length < 1) {
-                    // check if tag already exists
+                // insert tags
+                if ($length < 1) { // one tag
                     $check = "SELECT TagID FROM TTags where TagName='$tags[0]'";
-                    $rs = mysqli_query($conn,$check);
-                    $data = mysqli_fetch_array($rs, MYSQLI_NUM);
-
-                    if ($data[0] > 0) { // tag exists already
-                        // tag insert for video
-
-
-                    } else { // tag doesn't exist
-                        // insert tag into DB
-                        $insert = $conn->prepare("INSERT INTO TTags (TagID, TagName) values (?, ?)");
-                        $insert->bind_param("ss", $null, $tags[0]);
-                        $insert->execute();
-
-                        // tag insert for video
-
-                    }
-                // several tags
-                } else {
+                    insertTags($conn, $check, $titel, $null, $tags, $id, $tagID);
+                } else { // several tags
                     for ($i = 0; $i < $length; $i++) {
-                        // check if tag already exists
                         $check = "SELECT TagID FROM TTags where TagName='$tags[$i]'";
-                        $rs = mysqli_query($conn,$check);
-                        $data = mysqli_fetch_array($rs, MYSQLI_NUM);
-
-                        if ($data[0] > 0) { // tag exists already
-                            // tag insert for video
-
-                        } else { // tag doesn't exist
-                            // insert tag into DB
-                            $insert = $conn->prepare("INSERT INTO TTags (TagID, TagName) values (?, ?)");
-                            $insert->bind_param("ss", $null, $tags[$i]);
-                            $insert->execute();
-
-                            // tag insert for video
-                        }
+                        insertTags($conn, $check, $titel, $null, $tags, $id, $tagID);
                     }
                 }
             }
