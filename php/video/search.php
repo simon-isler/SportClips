@@ -6,14 +6,13 @@
  * Time: 14:19
  */
 
-if (isset($_POST['suchen'])) {
-    // connect to DB
-    $conn = mysqli_connect("localhost", "root", "", "SportClips");
+function search() {
+    if (isset($_POST['suchen'])) {
+        // define text
+        $suchtext = $_POST['suchtext'];
 
-    // define text
-    $suchtext = $_POST['suchtext'];
-
-    // find matches
-
-
+        showVideo("SELECT * from TVideos where VidName = '$suchtext'");
+    } else {
+        showVideo("SELECT VidID, VidPath, VidName, BenID FROM TVideos");
+    }
 }

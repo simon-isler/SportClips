@@ -27,4 +27,9 @@ if (isset($_POST['loeschen'])) {
     // delete video in db
     $query = "DELETE FROM TVideos WHERE VidID = '$id'";
     $conn->query($query);
+
+    // delete video tags
+    $delete = "DELETE FROM TVideoTags where VidID='$id'";
+    $conn->query($delete);
+
 }
