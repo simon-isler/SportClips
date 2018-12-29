@@ -70,12 +70,14 @@ function showVideo($select) {
                             </div>
                ";
             }
+            return true;
         } else {
             // error
             echo "
         <div class=\"alert alert-danger\" role=\"alert\">
-            Es gibt keine Videos in dieser Kategorie.
+            Es gibt keine passenden Videos.
         </div>";
+            return false;
         }
     }
 }

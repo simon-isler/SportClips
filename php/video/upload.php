@@ -85,6 +85,8 @@ if (isset($_POST['hochladen'])) {
             // title already in use
             } elseif ($data[0] > 0 ) {
                 $msg = "Dieser Titel wurde bereits verwendet!";
+            } elseif (empty($tags)) {
+                $msg = "Bitte geben Sie mindestens einen Tag an!";
             } else {
                 // moving file to clips folder
                 move_uploaded_file($_FILES["file"]["tmp_name"],

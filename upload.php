@@ -53,7 +53,7 @@ if ($_SESSION['benutzername'] == "" || $_SESSION['role'] == "Gast") {
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#"><span class="sr-only"></span></a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="post">
@@ -67,7 +67,8 @@ if ($_SESSION['benutzername'] == "" || $_SESSION['role'] == "Gast") {
 <main role="main">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3">Upload</h1>
+            <h1 class="display-3">SportClips</h1>
+            <p class="lead">Suche</p>
         </div>
     </div>
 

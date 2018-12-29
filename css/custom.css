@@ -9,14 +9,6 @@ body {
     padding-left: 0;
 }
 
-/* list */
-.list-group {
-    width: 15%;
-    margin-left: 2%;
-    float: left;
-}
-
-
 a {
     color: inherit;
     text-decoration: inherit;
@@ -36,18 +28,6 @@ a {
 .upload {
     margin-left: 20%;
     padding-top: 3%;
-}
-
-/* add image */
-.add {
-    height: 40%;
-    width: 40%;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 }
 
 /* video */
