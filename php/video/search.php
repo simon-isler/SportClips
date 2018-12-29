@@ -12,7 +12,7 @@ function search() {
         $conn = mysqli_connect("localhost", "root", "", "SportClips");
 
         // define text
-        $suchtext = $_POST['suchtext'];
+        $suchtext = mysqli_escape_string($conn, $_POST['suchtext']);
 
         // find name
         $name = "SELECT * from TVideos where VidName = '$suchtext'";
@@ -63,4 +63,5 @@ function search() {
             // display all videos
             showVideo("SELECT VidID, VidPath, VidName, BenID FROM TVideos");
     }
+    $conn->close();
 }

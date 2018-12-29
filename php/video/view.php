@@ -67,5 +67,6 @@ function videoViewer($id) {
             </div>
     </div>";
 
+    $conn->close();
 }
 

@@ -29,3 +29,4 @@ if ($_SESSION['benutzername'] == "Gast") {
     $_SESSION['role'] = "Gast";
     $benutzername = "Gast";
 }
+

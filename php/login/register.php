@@ -50,6 +50,7 @@ if (isset($_POST['registrieren'])) {
             $msg = "Passwörter stimmen nicht überein!";
         }
     }
+    $conn->close();
 }
 
 

@@ -11,7 +11,7 @@ if (isset($_POST['loeschen'])) {
     $conn = mysqli_connect("localhost", "root", "", "SportClips");
 
     // save vid id
-    $id = $_POST['loeschen'];
+    $id =  mysqli_real_escape_string($conn, $_POST['loeschen']);
 
     // video path
     $select = "SELECT VidPath from TVideos where VidID ='$id'";
@@ -32,4 +32,5 @@ if (isset($_POST['loeschen'])) {
     $delete = "DELETE FROM TVideoTags where VidID='$id'";
     $conn->query($delete);
 
+    $conn->close();
 }

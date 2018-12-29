@@ -57,13 +57,14 @@ function insertTags($conn, $check, $titel, $null, $tags, $id, $tagID) {
 if (isset($_POST['hochladen'])) {
     // globals
     $filename = $_FILES["file"]["name"];
-    $titel = $_POST['titel'];
-    $tags = $_POST['tags'];
+    $titel = mysqli_escape_string($conn, $_POST['titel']);
+    $tags = mysqli_escape_string($conn, $_POST['tags']);
     $path = "clips/" . $filename;
     $id = "NULL";
+    $null = "";
+
     $tagID = "";
     $date = date('Y-m-d');
-    $null = "";
     $benutzerId = $_SESSION['benutzerId'];
 
     // connect to DB
@@ -118,4 +119,5 @@ if (isset($_POST['hochladen'])) {
         // error
         $msg = "Die Datei ist fehlerhaft.";
     }
+    $conn->close();
 }

@@ -80,6 +80,7 @@ function showVideo($select) {
             return false;
         }
     }
+    $conn->close();
 }
 
 if ($_SESSION['role'] == "Lehrer") {
