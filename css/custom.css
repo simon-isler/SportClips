@@ -64,3 +64,11 @@ video.mainVideo {
     width: 100%;
     margin-top: 2%;
 }
+
+.btn-outline-light {
+    margin-left: 0;
+}
+
+#abmelden {
+    margin-left: 10%;
+}

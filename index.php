@@ -63,10 +63,12 @@ if ($_SESSION['benutzername'] == "") {
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="post">
-            <input class="form-control mr-sm-2" type="text" placeholder="Suche nach Tag/Name..." aria-label="Search" name="suchtext">
-            <button type="submit" name="suchen"><i class="fa fa-search"></i></button>
+            <div class="search">
+            <input class="form-control" type="text" placeholder="Suche nach Tag/Name..." aria-label="Search" name="suchtext">
+            <button type="submit" name="suchen" class="btn btn-outline-light"><i class="fa fa-search"></i></button>
+            </div>
             <div class="full">
-                <button type="submit" class="btn btn-outline-danger" name="abmelden">Abmelden</button>
+                <button type="submit" class="btn btn-outline-danger" id="abmelden" name="abmelden">Abmelden</button>
             </div>
         </form>
     </div>

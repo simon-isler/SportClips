@@ -6,17 +6,15 @@
 
     .full {
         width: 100%;
-        margin: auto;
-        display: block;
-        text-align: center;
+        float: left;
     }
 
     .full button {
         margin-top: 2%;
     }
 
-    .list-group {
-        width: 100%;
+    #abmelden {
+        margin-left: 0;
     }
 
     .row {
@@ -29,12 +27,9 @@
         margin-top: 10%;
     }
 
-    .add {
-        height: 100%;
-    }
-
-    .form-inline .form-control {
+    .search {
         width: 100%;
+        float: left;
     }
 
     .back {
@@ -54,5 +49,11 @@
     .info {
         float: left;
         margin-top: 2%;
+    }
+
+    .form-control {
+        width: auto;
+        display: inline-block;
+        float: left;
     }
 }

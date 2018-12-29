@@ -7,10 +7,6 @@ if ($_SESSION['benutzername'] == "") {
     header("location: login.php"); // redirecting to login
 }
 
-// save video id
-if (isset($_POST['ansehen'])) {
-    $id = $_POST['ansehen'];
-}
 ?>
 
 <!doctype html>
@@ -75,16 +71,19 @@ if (isset($_POST['ansehen'])) {
     <div class="container-fluid">
         <img src="img/back.png" alt="Back" onclick="window.location.href='index.php'" class="back">
 
-        <?php videoViewer($id);?>
-
-        <div class="info">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="checkbox" onclick="slowMo();">
-            <label class="form-check-label" for="defaultCheck1">
-                Slow Motion
-            </label>
-        </div>
-        </div>
+        <?php
+        // save video id
+        if (isset($_POST['ansehen'])) {
+            $id = $_POST['ansehen'];
+            videoViewer($id);
+        } else {
+            error_reporting(0);
+            // error
+            echo "
+                 <div class=\"alert alert-danger\" role=\"alert\" style='margin-top: 5%; width: 90%; float: right;'>
+                       Es wurde kein Video ausgewählt.
+                </div>";
+        } ?>
     </div>
 </main>
 

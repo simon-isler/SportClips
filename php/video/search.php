@@ -44,12 +44,15 @@ function search() {
 
                 // check if there are videos with the specific tag
                 if ($dataTags > 0) {
-                    for ($i = 0; $i <= count($dataTags); $i++) {
+                    for ($i = 0; $i < count($dataTags); $i++) {
                         $video = $output->fetch_assoc();
                         $vidid = $video['VidID'];
 
                         showVideo("SELECT * FROM TVideos where VidID = '$vidid'");
                     }
+                } else {
+                    // generate error msg if tag exists but no videos
+                    showVideo("SELECT * from TVideos where VidName = '$suchtext'");
                 }
             } else {
                 // generate error msg
