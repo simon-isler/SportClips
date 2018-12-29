@@ -58,10 +58,10 @@ function search() {
                 // generate error msg
                 showVideo("SELECT * from TVideos where VidName = '$suchtext'");
             }
+            $conn->close();
         }
     } else {
             // display all videos
             showVideo("SELECT VidID, VidPath, VidName, BenID FROM TVideos");
     }
-    $conn->close();
 }
