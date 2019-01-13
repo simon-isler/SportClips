@@ -3,3 +3,4 @@ php_value upload_max_filesize 2500M
 php_value max_execution_time 6000000
 php_value max_input_time 6000000
 php_value memory_limit 2500M
+ErrorDocument 404 /SportClips/404.html

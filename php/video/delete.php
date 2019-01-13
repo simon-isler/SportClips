@@ -34,3 +34,4 @@ if (isset($_POST['loeschen'])) {
 
     $conn->close();
 }
+

@@ -9,6 +9,11 @@
 // mysqli_connect() function opens a new connection to the MySQL server.
 $conn = mysqli_connect("localhost", "root", "");
 
+// database connection failed
+if ($conn == false) {
+    header("location: 404.html"); // redirect to 404 page
+}
+
 // create db with collation
 $database = "CREATE DATABASE IF NOT EXISTS SportClips CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
 $conn->query($database);
@@ -42,4 +47,5 @@ $conn->query($benutzer);
 $conn->query($videos);
 $conn->query($videotags);
 $conn->query($tags);
+
 
