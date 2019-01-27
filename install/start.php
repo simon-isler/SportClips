@@ -1,5 +1,6 @@
 <?php
 include ('../php/db.php'); // creates db
+include('php/validation.php');
 
 if (isset($_SESSION['benutzername'])) {
     header("location: index.php"); // redirecting to index
@@ -40,7 +41,27 @@ error_reporting(0);
 <body class="text-center">
 <div class="form-signin">
     <h3>SportClips Installation</h3><br>
-    <h6>Überprüfung Ihres Systems</h6>
+    <h5>Überprüfung Ihres Systems</h5>
+    <table class="table table-borderless">
+        <tbody>
+        <tr>
+            <td>PHP Version (>= 5)</td>
+            <td><?php echo $php_msg;?></td>
+        </tr>
+        <tr>
+            <td>MySQL Version (>= 5)</td>
+            <td><?php echo $sql_msg;?></td>
+        </tr>
+        <tr>
+            <td>PHP safe mode</td>
+            <td><?php echo $php_safemode;?></td>
+        </tr>
+        <tr>
+            <td>PHP sessions</td>
+            <td><?php echo $php_sessions;?></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <!-- Custom file first, then jQuery, then jquery.validate.js, then Bootstrap JS -->
