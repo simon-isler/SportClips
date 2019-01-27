@@ -60,6 +60,10 @@ error_reporting(0);
             <td>PHP sessions</td>
             <td><?php echo $php_sessions;?></td>
         </tr>
+        <tr>
+            <td>Datenbank</td>
+            <td>Wurde erstellt</td>
+        </tr>
         </tbody>
     </table>
     <form method="post">
