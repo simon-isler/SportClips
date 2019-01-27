@@ -1,123 +1,56 @@
 <?php
-################################################################################
-##              -= YOU MAY NOT REMOVE OR CHANGE THIS NOTICE =-                 #
-## --------------------------------------------------------------------------- #
-##  ApPHP EasyInstaller Free version                                           #
-##  Developed by:  ApPHP <info@apphp.com>                                      #
-##  License:       GNU LGPL v.3                                                #
-##  Site:          https://www.apphp.com/php-easyinstaller/                    #
-##  Copyright:     ApPHP EasyInstaller (c) 2009-2013. All rights reserved.     #
-##                                                                             #
-##  Additional modules (embedded):                                             #
-##  -- jQuery (JavaScript Library)                           http://jquery.com #
-##                                                                             #
-################################################################################
-   
-    session_start();   
+include ('../php/db.php'); // creates db
 
-	require_once('include/shared.inc.php');    
-    require_once('include/settings.inc.php');
-	require_once('include/functions.inc.php');
-	require_once('include/languages.inc.php');	
+if (isset($_SESSION['benutzername'])) {
+    header("location: index.php"); // redirecting to index
+}
 
-	$task = isset($_POST['task']) ? prepare_input($_POST['task']) : '';
-	$installation_type = isset($_POST['installation_type']) ? prepare_input($_POST['installation_type']) : 'wizard';
-	$program_already_installed = false;
-	
-	// handle previous installation
-	// -------------------------------------------------
-    if(file_exists(EI_CONFIG_FILE_PATH)){ 
-		$program_already_installed = true;
-		///header('location: '.EI_APPLICATION_START_FILE);
-        ///exit;
-	}
-	
-	// handle form submission
-	// -------------------------------------------------
-	if($task == 'send'){
-		$_SESSION['passed_step'] = 1;
-		$_SESSION['installation_type'] = $installation_type;
-		header('location: server_requirements.php');
-		exit;
-	}else if($task == 'start_over'){
-		$_SESSION['passed_step'] = 0;
-		$_SESSION['installation_type'] = '';
-		@unlink(EI_CONFIG_FILE_PATH);
-		session_destroy();		
-		// *** set new token
-		$_SESSION['token'] = md5(uniqid(rand(), true));
-	}	
-
+// disable errors
+error_reporting(0);
 ?>
 
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="de">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="a web application for videos about physical education">
     <meta name="author" content="Simon Isler">
-    <meta name="generator" content="ApPHP EasyInstaller">
-	<title>SportClips</title>
 
-	<link href="images/apphp.ico" rel="shortcut icon" />
-	<link rel="stylesheet" type="text/css" href="templates/<?php echo EI_TEMPLATE; ?>/css/styles.css" />
-	<?php
-		if($curr_lang_direction == 'rtl'){
-			echo '<link rel="stylesheet" type="text/css" href="templates/'.EI_TEMPLATE.'/css/rtl.css" />'."\n";
-		}
-	?>
-	<script type="text/javascript" src="js/main.js"></script>
-	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <title>SportClips</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="#"/>
+    <link rel="manifest" href="../img/favicon/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#9f00a7">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/login.css" rel="stylesheet">
 </head>
-<body>
-<div id="main">
-	<h1><?php echo lang_key('Installation von SportClips'); ?></h1>
 
-	<div id="content">
-		<?php
-			draw_side_navigation(1);		
-		?>
-		<div class="central-part">
-
-			<form action="start.php" method="post">
-			<input type="hidden" name="task" value="send" />
-			<input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" />
-
-			<table width="100%" cellspacing="0" cellpadding="0" border="0">
-			<tbody>
-			<tr>
-				<td>
-					<h2><?php echo lang_key('step_1_of'); ?> - <?php echo lang_key('start'); ?></h2>
-				</td>
-			</tr>
-			<tr><td nowrap="nowrap" height="10px"></td></tr>
-			<tr>
-				<td>
-					<h3><?php echo lang_key('select_installation_language'); ?></h3>					
-					<?php
-						if(count($arr_active_languages) > 1){
-							echo lang_key('language').': ';
-							echo '<select class="form_select" name="lang" onchange="document.location=\'start.php?lang=\'+this.value">';
-							foreach($arr_active_languages as $key => $val){
-								echo '<option '.(($key == $curr_lang) ? 'selected="selected"' : '').' value="'.$key.'">'.$val['name'].'</option>';
-							}
-							echo '</select>';						
-						}
-					?>
-				</td>                
-			</tr>
-			<tr><td nowrap="nowrap" height="30px"></td></tr>
-			<tr>
-				<td>
-					<input type="submit" class="form_button" name="btnSubmit" id="button_start" title="<?php echo lang_key('click_to_start_installation'); ?>" value="<?php echo lang_key('start'); ?>" />
-				</td>
-			</tr>
-			</tbody>
-			</table>
-			</form>
-		
-		</div>
-		<div class="clear"></div>
-	</div>
+<body class="text-center">
+<div class="form-signin">
+    <h3>SportClips Installation</h3><br>
+    <h6>Überprüfung Ihres Systems</h6>
 </div>
+
+<!-- Custom file first, then jQuery, then jquery.validate.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
 </html>
