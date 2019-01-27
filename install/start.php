@@ -62,6 +62,9 @@ error_reporting(0);
         </tr>
         </tbody>
     </table>
+    <form method="post">
+        <?php echo $success; echo $button;?>
+    </form>
 </div>
 
 <!-- Custom file first, then jQuery, then jquery.validate.js, then Bootstrap JS -->

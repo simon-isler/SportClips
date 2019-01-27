@@ -11,6 +11,8 @@ $php_msg = "";
 $php_safemode = "";
 $php_sessions = "";
 $sql_msg = "";
+$success = "";
+$button = "";
 
 // check php version
 $php_version = phpversion();
@@ -54,5 +56,13 @@ if(empty($_SESSION['myscriptname_sessions_work']))
     $php_sessions="Erfolgreich";
 }
 
-// display button
-if ($php_msg == "Erfolgreich" && $php_safemode == && $php_sessions && $sql_msg)
+// display button if everything works
+if ($php_msg == "Erfolgreich" && $php_safemode == "Erfolgreich" && $php_sessions == "Erfolgreich" && $sql_msg == "Erfolgreich") {
+    $success = "<br><p class=\"lead\">Die Überprüfung wurde abgeschlossen. Es wurde alles installiert. Sie können SportClips nun verwenden!</p>";
+    $button = "<button type=\"submit\" name=\"weiter\" class=\"btn btn-primary\">Weiter</button>";
+
+    // redirect to login
+    if (isset($_POST['weiter'])) {
+        header('location: ../login.php');
+    }
+}
